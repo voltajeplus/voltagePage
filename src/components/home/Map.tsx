@@ -56,14 +56,11 @@ const Map = ({ stations, selectedStation }: MapProps) => {
     const icons = useMemo(() => {
         if (!L) return null;
         return {
-            green: new L.DivIcon({
-                className: 'custom-pin-icon-wrapper', // Leaflet class wrapper
-                html: `<div class="custom-pin-marker">
-                         <img src="/images/logo_voltaje.png" alt="Voltaje" class="custom-pin-logo" />
-                       </div>`,
-                iconSize: [50, 50], // Coincide con CSS
-                iconAnchor: [25, 50], // Punta del pin (aprox)
-                popupAnchor: [0, -55], // Popup encima del pin
+            green: new L.Icon({
+                iconUrl: '/images/marker0.png',
+                iconSize: [33, 48],
+                iconAnchor: [16, 48],
+                popupAnchor: [0, -52],
             }),
             user: new L.Icon({
                 iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-blue.png',

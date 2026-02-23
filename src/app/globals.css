@@ -71,36 +71,3 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-neon-green);
 }
-
-/* Custom Map Pin */
-.custom-pin-marker {
-  width: 50px;
-  height: 50px;
-  background: white;
-  border: 4px solid #00E676;
-  border-radius: 50% 50% 50% 0;
-  box-shadow: 0 10px 25px rgba(0, 230, 118, 0.4);
-  display: flex !important; /* Force flex on leaflet div if needed */
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  /* Initial transform is handled by Leaflet or applying here might conflict with Leaflet positioning? */
-  /* Leaflet applies translate3d for position. Rotation must be applied here. */
-  transform: rotate(-45deg); 
-  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.leaflet-marker-icon:hover .custom-pin-marker {
-  transform: rotate(-45deg) scale(1.15) translateY(-5px);
-  border-color: #00ff80;
-  box-shadow: 0 15px 35px rgba(0, 230, 118, 0.6);
-  z-index: 1000;
-}
-
-.custom-pin-logo {
-  width: 32px;
-  height: 32px;
-  object-fit: contain;
-  transform: rotate(45deg); /* Counter-rotate to screen */
-  pointer-events: none;
-}
