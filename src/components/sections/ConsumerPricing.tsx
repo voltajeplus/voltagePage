@@ -19,7 +19,7 @@ export const ConsumerPricing = () => {
                         Tu Energía, <span className="text-[#00E676] text-glow">Tu Elección</span>
                     </h2>
                     <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-                        Sin contratos forzosos. Elige pagar solo por lo que usas o disfruta de libertad ilimitada.
+                        Disfruta de tu Energía Ilimitada
                     </p>
                 </div>
 
@@ -36,8 +36,8 @@ export const ConsumerPricing = () => {
                             <div className="flex items-start gap-4">
                                 <div className="w-10 h-10 rounded-full bg-[#00E676]/10 flex items-center justify-center text-[#00E676] shrink-0 font-bold">1</div>
                                 <div>
-                                    <h4 className="font-bold text-lg text-white">Recarga tu Wallet</h4>
-                                    <p className="text-gray-400">Recarga tu wallet con <span className="text-[#00E676] font-bold">$20</span> y recibe un bono de $5 en time para consumo.</p>
+                                    <h4 className="font-bold text-lg text-white">Recarga tu Billetera</h4>
+                                    <p className="text-gray-400">Recarga tu billetera con <span className="text-[#00E676] font-bold">$20</span> y recibe un bono de $5 en time para consumo.</p>
                                 </div>
                             </div>
 
@@ -78,7 +78,7 @@ export const ConsumerPricing = () => {
                             <div className="mb-6">
                                 <h3 className="text-2xl font-bold mb-2 flex items-center gap-2">
                                     <Star className="fill-[#00E676] text-[#00E676]" />
-                                    Membresía VIP
+                                    Cupones VIP
                                 </h3>
                                 <p className="text-gray-400">Olvídate de contar los minutos.</p>
                             </div>
@@ -89,7 +89,7 @@ export const ConsumerPricing = () => {
 
                             <ul className="space-y-3 mb-8">
                                 <li className="flex items-center gap-3 text-sm text-gray-200">
-                                    <Check className="w-4 h-4 text-[#00E676]" /> Tiempor ilimitado en todas las estaciones
+                                    <Check className="w-4 h-4 text-[#00E676]" /> Tiempo ilimitado en todas las estaciones
                                 </li>
                                 <li className="flex items-center gap-3 text-sm text-gray-200">
                                     <Check className="w-4 h-4 text-[#00E676]" /> Sin depósitos ni retenciones
@@ -115,10 +115,10 @@ export const ConsumerPricing = () => {
                                 <div>
                                     <h4 className="font-bold text-lg text-white mb-1">Gana Cargas Gratis</h4>
                                     <p className="text-sm text-gray-400 mb-4">
-                                        Invita a 5 amigos y recibe <span className="text-white font-bold">30 mins gratis</span> cuando alquilen.
+                                        Disfruta de una carga gratis con nuestros power bank, gracias a los cupones vip
                                     </p>
                                     <Link href="/registro" className="text-[#00E676] text-sm font-bold hover:underline flex items-center gap-1">
-                                        Invitar Amigos →
+                                        Más Información →
                                     </Link>
                                 </div>
                             </div>

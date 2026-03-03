@@ -14,8 +14,8 @@ const steps = [
     {
         id: 2,
         icon: Zap,
-        title: "Recoge tu Power Bank",
-        description: "La estación expulsará automáticamente una batería cargada lista para usar."
+        title: "Alquila tu Power Bank",
+        description: "En cualquiera de nuestras Estaciones Voltaje , recibirás Automáticamente un Power Bank"
     },
     {
         id: 3,

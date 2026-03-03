@@ -7,7 +7,7 @@ import { Plus, Minus } from 'lucide-react';
 const faqs = [
     {
         question: "¿Cuánto cuesta alquilar un power bank?",
-        answer: "El coste varía según la ubicación. Por 30 minutos pagas entre $3-5, con un máximo de $5-10 por 24 horas. Puedes ver el precio exacto en la pantalla de cada estación."
+        answer: "El Costo es de 20$ al cambio BCV."
     },
     {
         question: "¿Qué pasa si no devuelvo el power bank?",
@@ -15,19 +15,19 @@ const faqs = [
     },
     {
         question: "¿Son compatibles con mi dispositivo?",
-        answer: "Sí, nuestros power banks son compatibles con todo tipo de dispositivos: iPhone, Android, tablets y otros dispositivos USB. Incluyen cables Lightning, USB-C y Micro-USB."
+        answer: "Si ,excepto con dispositivos Windows"
     },
     {
         question: "¿Cómo puedo pagar?",
-        answer: "Aceptamos tarjetas bancarias locales e internacionales, Apple Pay, Google Pay y pagos contactless. También puedes pagar a través de nuestra aplicación móvil."
+        answer: "Pago Movil / Cashea / Paypal/ Binance"
     },
     {
         question: "¿Puedo devolver el power bank en cualquier estación?",
-        answer: "Sí, puedes devolver el power bank en cualquier estación Voltaje, sin importar dónde lo hayas alquilado. Solo colócalo en cualquier ranura libre y el alquiler se finalizará automáticamente."
+        answer: "Si , en cualquier Estación de Voltaje"
     },
     {
         question: "¿Qué capacidad tienen los power banks?",
-        answer: "Nuestros power banks tienen una capacidad de 10,000mAh, suficiente para cargar completamente la mayoría de smartphones 2-3 veces."
+        answer: "Capacidad de 6000 mAH a 8000 mAH"
     }
 ];
 

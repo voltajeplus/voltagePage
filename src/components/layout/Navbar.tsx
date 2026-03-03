@@ -19,6 +19,7 @@ export const Navbar = () => {
     }, []);
 
     const navLinks = [
+        { name: 'Inicio', href: '/' },
         { name: 'Negocios', href: '/como-funciona' },
         { name: 'Beneficios PYMES', href: '/precios' },
         { name: 'Ubica tu Estación', href: '/contacto' },

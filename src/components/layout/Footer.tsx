@@ -17,7 +17,7 @@ export const Footer = () => {
                             <img src="/images/logo_voltaje.png" alt="Voltaje" className="h-10 w-auto object-contain" />
                         </Link>
                         <p className="text-gray-400 text-sm leading-relaxed">
-                            Revolucionando la forma en que el mundo se conecta y carga.
+                            Transformando la forma en que el mundo se conecta y carga.
                             Energía inteligente para un futuro conectado.
                         </p>
                         <div className="flex gap-4">
