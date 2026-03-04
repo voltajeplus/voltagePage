@@ -128,11 +128,11 @@ export const BusinessSections = () => {
                                 <div className="space-y-4 text-sm text-gray-400">
                                     <div className="flex items-center gap-3">
                                         <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center">✉️</div>
-                                        info@voltajevzla.com
+                                        soportevoltajeplus@gmail.com
                                     </div>
                                     <div className="flex items-center gap-3">
                                         <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center">📞</div>
-                                        +58 412 685 1090
+                                        0416 375 0325
                                     </div>
                                 </div>
                             </div>

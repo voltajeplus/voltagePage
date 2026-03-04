@@ -54,11 +54,11 @@ export const Footer = () => {
                         <ul className="space-y-4 text-sm text-gray-400">
                             <li className="flex items-center gap-3">
                                 <span className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-[#00E676]">📞</span>
-                                <a href="tel:+584126851090" className="hover:text-[#00E676] transition-colors">+58 412 685 1090</a>
+                                <a href="tel:04163750325" className="hover:text-[#00E676] transition-colors">0416 375 0325</a>
                             </li>
                             <li className="flex items-center gap-3">
                                 <span className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-[#00E676]">✉️</span>
-                                <a href="mailto:info@voltajevzla.com" className="hover:text-[#00E676] transition-colors">info@voltajevzla.com</a>
+                                <a href="mailto:soportevoltajeplus@gmail.com" className="hover:text-[#00E676] transition-colors">soportevoltajeplus@gmail.com</a>
                             </li>
                             <li className="flex items-center gap-3">
                                 <span className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-[#00E676]">📍</span>
