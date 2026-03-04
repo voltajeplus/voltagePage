@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { Button } from '@/components/ui/Button';
@@ -8,6 +8,37 @@ import { motion } from 'framer-motion';
 import { CheckCircle2, ArrowRight, Building2, MapPin, User, Phone, Mail } from 'lucide-react';
 
 export default function RegistroPage() {
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isSubmitted, setIsSubmitted] = useState(false);
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+
+        const formData = new FormData(e.currentTarget);
+
+        try {
+            const response = await fetch('https://formsubmit.co/ajax/soportevoltajeplus@gmail.com', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json'
+                },
+                body: formData
+            });
+
+            if (response.ok) {
+                setIsSubmitted(true);
+            } else {
+                alert('Hubo un error al enviar el formulario. Por favor intenta nuevamente.');
+            }
+        } catch (error) {
+            console.error('Error enviando formulario:', error);
+            alert('Hubo un error al enviar el formulario.');
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+
     return (
         <main className="min-h-screen bg-black text-white selection:bg-[#00E676] selection:text-black">
             <Navbar />
@@ -89,64 +120,112 @@ export default function RegistroPage() {
                                     </p>
                                 </div>
 
-                                <form className="space-y-5">
-                                    <div className="space-y-4">
-                                        <div className="relative">
-                                            <Building2 className="absolute left-4 top-3.5 w-5 h-5 text-gray-500" />
-                                            <input
-                                                type="text"
-                                                placeholder="Nombre del Negocio"
-                                                className="w-full bg-black/30 border border-white/10 rounded-xl pl-12 pr-4 py-3 text-white placeholder-gray-500 focus:border-[#00E676] focus:outline-none transition-colors"
-                                            />
+                                {isSubmitted ? (
+                                    <div className="bg-[#00E676]/10 border border-[#00E676]/30 rounded-2xl p-8 text-center">
+                                        <div className="w-16 h-16 bg-[#00E676]/20 rounded-full flex items-center justify-center mx-auto mb-4 text-[#00E676]">
+                                            <CheckCircle2 className="w-8 h-8" />
                                         </div>
-                                        <div className="relative">
-                                            <MapPin className="absolute left-4 top-3.5 w-5 h-5 text-gray-500" />
-                                            <input
-                                                type="text"
-                                                placeholder="Ubicación (Ciudad/Dirección)"
-                                                className="w-full bg-black/30 border border-white/10 rounded-xl pl-12 pr-4 py-3 text-white placeholder-gray-500 focus:border-[#00E676] focus:outline-none transition-colors"
-                                            />
-                                        </div>
+                                        <h3 className="text-xl font-bold text-white mb-2">¡Solicitud Enviada!</h3>
+                                        <p className="text-gray-400">
+                                            Hemos recibido tu información correctamente. Nuestro equipo se pondrá en contacto contigo muy pronto.
+                                        </p>
+                                        <Button
+                                            className="mt-6"
+                                            onClick={() => setIsSubmitted(false)}
+                                            variant="outline"
+                                        >
+                                            Enviar otra solicitud
+                                        </Button>
                                     </div>
+                                ) : (
+                                    <form onSubmit={handleSubmit} className="space-y-5">
+                                        <input type="hidden" name="_subject" value="Nuevo registro de negocio - Voltaje Plus" />
+                                        <input type="hidden" name="_captcha" value="false" />
 
-                                    <div className="h-px bg-white/10 my-4" />
-
-                                    <div className="space-y-4">
-                                        <div className="relative">
-                                            <User className="absolute left-4 top-3.5 w-5 h-5 text-gray-500" />
-                                            <input
-                                                type="text"
-                                                placeholder="Nombre de la Persona de Contacto"
-                                                className="w-full bg-black/30 border border-white/10 rounded-xl pl-12 pr-4 py-3 text-white placeholder-gray-500 focus:border-[#00E676] focus:outline-none transition-colors"
-                                            />
+                                        <div className="space-y-4">
+                                            <div className="relative">
+                                                <Building2 className="absolute left-4 top-3.5 w-5 h-5 text-gray-500" />
+                                                <input
+                                                    type="text"
+                                                    name="Negocio"
+                                                    required
+                                                    placeholder="Nombre del Negocio"
+                                                    className="w-full bg-black/30 border border-white/10 rounded-xl pl-12 pr-4 py-3 text-white placeholder-gray-500 focus:border-[#00E676] focus:outline-none transition-colors"
+                                                />
+                                            </div>
+                                            <div className="relative">
+                                                <MapPin className="absolute left-4 top-3.5 w-5 h-5 text-gray-500" />
+                                                <input
+                                                    type="text"
+                                                    name="Ubicación"
+                                                    required
+                                                    placeholder="Ubicación (Ciudad/Dirección)"
+                                                    className="w-full bg-black/30 border border-white/10 rounded-xl pl-12 pr-4 py-3 text-white placeholder-gray-500 focus:border-[#00E676] focus:outline-none transition-colors"
+                                                />
+                                            </div>
                                         </div>
-                                        <div className="relative">
-                                            <Phone className="absolute left-4 top-3.5 w-5 h-5 text-gray-500" />
-                                            <input
-                                                type="tel"
-                                                placeholder="Teléfono"
-                                                className="w-full bg-black/30 border border-white/10 rounded-xl pl-12 pr-4 py-3 text-white placeholder-gray-500 focus:border-[#00E676] focus:outline-none transition-colors"
-                                            />
-                                        </div>
-                                        <div className="relative">
-                                            <Mail className="absolute left-4 top-3.5 w-5 h-5 text-gray-500" />
-                                            <input
-                                                type="email"
-                                                placeholder="Correo Electrónico"
-                                                className="w-full bg-black/30 border border-white/10 rounded-xl pl-12 pr-4 py-3 text-white placeholder-gray-500 focus:border-[#00E676] focus:outline-none transition-colors"
-                                            />
-                                        </div>
-                                    </div>
 
-                                    <Button className="w-full text-lg py-6 mt-4 group">
-                                        Enviar Solicitud
-                                        <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                                    </Button>
+                                        <div className="h-px bg-white/10 my-4" />
 
-                                    <p className="text-xs text-center text-gray-500 mt-4">
-                                        Al enviar aceptas nuestros términos de privacidad. Tus datos están seguros.
-                                    </p>
-                                </form>
+                                        <div className="space-y-4">
+                                            <div className="relative">
+                                                <User className="absolute left-4 top-3.5 w-5 h-5 text-gray-500" />
+                                                <input
+                                                    type="text"
+                                                    name="Contacto"
+                                                    required
+                                                    placeholder="Nombre de la Persona de Contacto"
+                                                    className="w-full bg-black/30 border border-white/10 rounded-xl pl-12 pr-4 py-3 text-white placeholder-gray-500 focus:border-[#00E676] focus:outline-none transition-colors"
+                                                />
+                                            </div>
+                                            <div className="relative">
+                                                <Phone className="absolute left-4 top-3.5 w-5 h-5 text-gray-500" />
+                                                <input
+                                                    type="tel"
+                                                    name="Teléfono"
+                                                    required
+                                                    placeholder="Teléfono"
+                                                    className="w-full bg-black/30 border border-white/10 rounded-xl pl-12 pr-4 py-3 text-white placeholder-gray-500 focus:border-[#00E676] focus:outline-none transition-colors"
+                                                />
+                                            </div>
+                                            <div className="relative">
+                                                <Mail className="absolute left-4 top-3.5 w-5 h-5 text-gray-500" />
+                                                <input
+                                                    type="email"
+                                                    name="Email"
+                                                    required
+                                                    placeholder="Correo Electrónico"
+                                                    className="w-full bg-black/30 border border-white/10 rounded-xl pl-12 pr-4 py-3 text-white placeholder-gray-500 focus:border-[#00E676] focus:outline-none transition-colors"
+                                                />
+                                            </div>
+                                        </div>
+
+                                        <Button
+                                            type="submit"
+                                            disabled={isSubmitting}
+                                            className="w-full text-lg py-6 mt-4 group relative overflow-hidden"
+                                        >
+                                            {isSubmitting ? (
+                                                <span className="flex items-center justify-center">
+                                                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-black" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                                    </svg>
+                                                    Enviando...
+                                                </span>
+                                            ) : (
+                                                <>
+                                                    Enviar Solicitud
+                                                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                                                </>
+                                            )}
+                                        </Button>
+
+                                        <p className="text-xs text-center text-gray-500 mt-4">
+                                            Al enviar aceptas nuestros términos de privacidad. Tus datos están seguros.
+                                        </p>
+                                    </form>
+                                )}
                             </div>
 
                             {/* Decorative Elements behind form */}

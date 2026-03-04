@@ -1,12 +1,49 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { Button } from "@/components/ui/Button";
 import { motion } from 'framer-motion';
 import { Users, Clock, Zap, TrendingUp, Building, Smartphone, Coffee, ShoppingBag } from 'lucide-react';
 
 export const BusinessSections = () => {
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isSubmitted, setIsSubmitted] = useState(false);
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+
+        const form = e.currentTarget;
+        const formData = new FormData(form);
+
+        try {
+            const response = await fetch('https://formsubmit.co/ajax/soportevoltajeplus@gmail.com', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json'
+                },
+                body: formData
+            });
+
+            if (response.ok) {
+                setIsSubmitted(true);
+                form.reset();
+            } else {
+                throw new Error('Error al enviar el formulario');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Hubo un error al procesar tu solicitud. Por favor intenta de nuevo.');
+        } finally {
+            setIsSubmitting(false);
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                setIsSubmitted(false);
+            }, 5000);
+        }
+    };
+
     return (
         <>
             {/* Hero */}
@@ -137,13 +174,50 @@ export const BusinessSections = () => {
                                 </div>
                             </div>
 
-                            <form className="space-y-4">
-                                <input type="text" placeholder="Nombre" className="w-full bg-black/30 border border-white/10 rounded-lg px-4 py-3 focus:border-[#00E676] focus:outline-none" />
-                                <input type="text" placeholder="Nombre del Negocio" className="w-full bg-black/30 border border-white/10 rounded-lg px-4 py-3 focus:border-[#00E676] focus:outline-none" />
-                                <input type="email" placeholder="Email" className="w-full bg-black/30 border border-white/10 rounded-lg px-4 py-3 focus:border-[#00E676] focus:outline-none" />
-                                <textarea rows={3} placeholder="Mensaje" className="w-full bg-black/30 border border-white/10 rounded-lg px-4 py-3 focus:border-[#00E676] focus:outline-none" />
-                                <Button className="w-full">Enviar Solicitud</Button>
-                            </form>
+                            {isSubmitted ? (
+                                <div className="bg-[#00E676]/10 border border-[#00E676]/30 rounded-2xl p-8 text-center h-full flex flex-col items-center justify-center">
+                                    <div className="w-16 h-16 bg-[#00E676]/20 rounded-full flex items-center justify-center mx-auto mb-4 text-[#00E676]">
+                                        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                        </svg>
+                                    </div>
+                                    <h3 className="text-xl font-bold text-white mb-2">¡Mensaje Enviado!</h3>
+                                    <p className="text-gray-400">
+                                        Hemos recibido tu mensaje correctamente. Nuestro equipo se pondrá en contacto contigo pronto.
+                                    </p>
+                                    <Button
+                                        className="mt-6"
+                                        onClick={() => setIsSubmitted(false)}
+                                        variant="outline"
+                                    >
+                                        Enviar otro mensaje
+                                    </Button>
+                                </div>
+                            ) : (
+                                <form onSubmit={handleSubmit} className="space-y-4">
+                                    <input type="hidden" name="_subject" value="Nuevo contacto de negocio - Voltaje Plus" />
+                                    <input type="hidden" name="_captcha" value="false" />
+
+                                    <input type="text" name="Nombre" required placeholder="Nombre" className="w-full bg-black/30 border border-white/10 rounded-lg px-4 py-3 focus:border-[#00E676] focus:outline-none text-white" />
+                                    <input type="text" name="Negocio" required placeholder="Nombre del Negocio" className="w-full bg-black/30 border border-white/10 rounded-lg px-4 py-3 focus:border-[#00E676] focus:outline-none text-white" />
+                                    <input type="email" name="Email" required placeholder="Email" className="w-full bg-black/30 border border-white/10 rounded-lg px-4 py-3 focus:border-[#00E676] focus:outline-none text-white" />
+                                    <textarea rows={3} name="Mensaje" required placeholder="Mensaje" className="w-full bg-black/30 border border-white/10 rounded-lg px-4 py-3 focus:border-[#00E676] focus:outline-none text-white" />
+
+                                    <Button type="submit" disabled={isSubmitting} className="w-full">
+                                        {isSubmitting ? (
+                                            <span className="flex items-center justify-center">
+                                                <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-black" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                                </svg>
+                                                Enviando...
+                                            </span>
+                                        ) : (
+                                            'Enviar Solicitud'
+                                        )}
+                                    </Button>
+                                </form>
+                            )}
                         </div>
                     </div>
                 </div>
