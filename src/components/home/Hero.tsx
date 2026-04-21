@@ -89,13 +89,9 @@ export const Hero = () => {
                                 ref={videoRef}
                                 autoPlay
                                 loop
+                                muted
                                 playsInline
                                 className="w-full h-full object-cover"
-                                onLoadedData={() => {
-                                    if (videoRef.current) {
-                                        videoRef.current.volume = 0.5;
-                                    }
-                                }}
                             >
                                 <source src="/videos/hero-video.mp4" type="video/mp4" />
                             </video>
