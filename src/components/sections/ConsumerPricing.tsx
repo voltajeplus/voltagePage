@@ -37,7 +37,7 @@ export const ConsumerPricing = () => {
                                 <div className="w-10 h-10 rounded-full bg-[#00E676]/10 flex items-center justify-center text-[#00E676] shrink-0 font-bold">1</div>
                                 <div>
                                     <h4 className="font-bold text-lg text-white">Recarga tu Billetera</h4>
-                                    <p className="text-gray-400">Recarga tu billetera con <span className="text-[#00E676] font-bold">$20</span> y recibe un bono de $5 en time para consumo.</p>
+                                    <p className="text-gray-400">Recarga tu billetera con <span className="text-[#00E676] font-bold">12.000Bs</span> y recibe un bono de <span className="text-[#00E676] font-bold">5 minutos</span> para consumo.</p>
                                 </div>
                             </div>
 
@@ -53,7 +53,7 @@ export const ConsumerPricing = () => {
                         <div className="mt-10 pt-8 border-t border-white/10">
                             <h4 className="text-sm uppercase tracking-widest text-[#00E676] font-bold mb-4">Tarifa de Uso</h4>
                             <div className="flex items-baseline gap-2 mb-2">
-                                <span className="text-5xl font-bold text-white">$1.00</span>
+                                <span className="text-5xl font-bold text-white">1.200Bs</span>
                             </div>
                             <p className="text-gray-300">Por cada <span className="font-bold text-white">30min</span> de uso.</p>
                             <p className="text-xs text-gray-500 mt-2">* Tarifa calculada en Bolívares a la tasa del día.</p>
