@@ -16,15 +16,16 @@ export const BusinessSections = () => {
 
         const form = e.currentTarget;
         const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
 
         try {
-            const response = await fetch('https://formsubmit.co/ajax/voltajevzla@gmail.com', {
+            const response = await fetch('/api/contact', {
                 method: 'POST',
-                body: formData
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
             });
 
             const result = await response.json();
-            console.log('FormSubmit response:', result);
 
             if (response.ok && result.success) {
                 setIsSubmitted(true);
