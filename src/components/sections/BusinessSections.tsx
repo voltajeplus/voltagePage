@@ -128,7 +128,7 @@ export const BusinessSections = () => {
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                         {[
                             { icon: Coffee, title: "Cafeterías", img: "/images/ai_generated/cafe_voltifi.png", isImage: true },
-                            { icon: ShoppingBag, title: "Retail", img: "/images/ai_generated/retail_voltifi.png", isImage: true },
+                            { icon: ShoppingBag, title: "Instalación de Estación Voltaje", img: "/images/ai_generated/technicians_installing_v2.png", isImage: true },
                             { icon: Building, title: "Hoteles", img: "/images/ai_generated/hotel_voltifi.png", isImage: true },
                             { icon: Smartphone, title: "Eventos", img: "/images/ai_generated/event_voltifi.png", isImage: true }
                         ].map((sector, i) => (
@@ -165,7 +165,7 @@ export const BusinessSections = () => {
                                 <div className="space-y-4 text-sm text-gray-400">
                                     <div className="flex items-center gap-3">
                                         <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center">✉️</div>
-                                        voltajevzla@gmail.com
+                                        ventasvoltaje09@gmail.com
                                     </div>
                                     <div className="flex items-center gap-3">
                                         <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center">📞</div>

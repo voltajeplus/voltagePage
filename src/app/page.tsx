@@ -37,8 +37,8 @@ export default function Home() {
             </p>
             <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-[#00E676]/10">
               <img
-                src="/images/ai_generated/hero_render.png"
-                alt="Estación de Carga Voltaje"
+                src="/images/ai_generated/hotel_voltifi.png"
+                alt="Hoteles"
                 className="w-full h-auto"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#050505]/60 via-transparent to-transparent pointer-events-none" />

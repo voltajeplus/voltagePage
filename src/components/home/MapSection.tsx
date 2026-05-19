@@ -32,13 +32,29 @@ export const MapSection = () => {
 
     useEffect(() => {
         const fetchStations = async () => {
+            try {
+                const res = await fetch('/api/stations');
+                const data = await res.json();
+                if (data.success && data.stations.length > 0) {
+                    setStations(data.stations);
+                    setLoading(false);
+                    return;
+                }
+            } catch {
+                console.log('Error al conectar con API, usando datos locales');
+            }
+
             const hardcodedStations: Station[] = [
-                { id: 1, lat: 10.489046014202566, lng: -66.85450998095091, name: 'C.C. El Sambil Chacao', status: 'Available', dist: "2km", freeNum: 23, totalNum: 24, address: 'F4QW+J5 Caracas, Distrito Capital' },
-                { id: 2, lat: 10.489039377007927, lng: -66.85453080158577, name: 'C.C. El Sambil Chacao (Fast)', status: 'Available', dist: "2km", freeNum: 56, totalNum: 57, address: 'F4QW+J5 Caracas, Distrito Capital' },
-                { id: 3, lat: 10.490175357222666, lng: -66.8406271116394, name: 'Parque Generalísimo Francisco de Miranda', status: 'Occupied', dist: "2km", freeNum: 0, totalNum: 0, address: 'F5R5+GHF, Caracas' },
-                { id: 4, lat: 10.4905375, lng: -66.83726560000001, name: 'Eco Café', status: 'Occupied', dist: "2km", freeNum: 0, totalNum: 0, address: 'F5R7+636, Caracas' },
-                { id: 5, lat: 10.495777056989855, lng: -66.8316165325409, name: 'Prueba Johnson', status: 'Available', dist: "3km", freeNum: 6, totalNum: 12, address: 'Av Romulo Gallegos. Edif Johnson&Johnson' },
-                { id: 6, lat: 10.49568206138428, lng: -66.83112587050017, name: 'Torre Johnson & Johnson', status: 'Available', dist: "3km", freeNum: 158, totalNum: 260, address: 'Av. Rómulo Gallegos, Caracas' }
+                { id: 42, lat: 10.541448204568155, lng: -66.87963462645875, name: 'Finacao - El Avila', status: 'Occupied', dist: "4km", freeNum: 0, totalNum: 0, address: 'Distrito Capital, G4RC+H48, 1050, Distrito Capital, Venezuela' },
+                { id: 33, lat: 10.504093709521328, lng: -66.85031924418031, name: 'Clinica El Avila', status: 'Available', dist: "5km", freeNum: 44, totalNum: 48, address: 'Av. San Juan Bosco, Caracas 1060, Distrito Capital, Venezuela' },
+                { id: 6, lat: 10.489046014202566, lng: -66.85450998095091, name: 'C.C. El Sambil Chacao', status: 'Available', dist: "5km", freeNum: 72, totalNum: 72, address: 'F4QW+J5 Caracas, Distrito Capital, Venezuela' },
+                { id: 32, lat: 10.500853102543433, lng: -66.84380851534425, name: 'Restaurant PinchoPan', status: 'Available', dist: "6km", freeNum: 12, totalNum: 12, address: 'Los Palos Grandes, Caracas 1060, Miranda, Venezuela' },
+                { id: 8, lat: 10.486476886547981, lng: -66.83935651352692, name: 'EVENTOS-VOLTAJE-PLUS', status: 'Available', dist: "7km", freeNum: 80, totalNum: 104, address: 'Parque Simón Bolívar, Caracas 1064, Miranda, Venezuela' },
+                { id: 1, lat: 10.4905375, lng: -66.83726560000001, name: 'Eco Café', status: 'Available', dist: "7km", freeNum: 12, totalNum: 12, address: 'F5R7+636, Caminería de Concreto, Caracas 1071, Miranda, Venezuela' },
+                { id: 2, lat: 10.495777056989855, lng: -66.8316165325409, name: 'Prueba Johnson', status: 'Available', dist: "7km", freeNum: 39, totalNum: 48, address: 'Av Romulo Gallegos, Edif Johnson&Johnson Piso 2, Caracas 1071, Miranda, Venezuela' },
+                { id: 36, lat: 10.495738434350784, lng: -66.83149333313521, name: 'TRÁNSITO VOLTAJE', status: 'Available', dist: "7km", freeNum: 12, totalNum: 12, address: 'F5W9+8C3, Caracas 1071, Miranda, Venezuela' },
+                { id: 44, lat: 10.492563125269852, lng: -66.83045647745962, name: 'La Jungla', status: 'Available', dist: "7km", freeNum: 24, totalNum: 24, address: 'Campo Claro, Caracas 1071, Miranda, Venezuela' },
+                { id: 43, lat: 10.49185744533558, lng: -66.82964856931152, name: 'Fetuccine', status: 'Available', dist: "7km", freeNum: 12, totalNum: 12, address: 'Av. Francisco de Miranda, Los Ruices, Caracas 1071, Miranda, Venezuela' }
             ];
             setStations(hardcodedStations);
             setLoading(false);

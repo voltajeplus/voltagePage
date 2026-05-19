@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useCallback, useRef } from 'react';
+import React, { useState, useCallback, useEffect, useRef } from 'react';
 import { GoogleMap, useJsApiLoader, Marker, InfoWindow } from '@react-google-maps/api';
 
 const containerStyle = {
@@ -31,6 +31,7 @@ interface Station {
     lng: number;
     name: string;
     status: string;
+    category?: string;
     dist?: string;
     freeNum?: number;
     totalNum?: number;
@@ -40,9 +41,10 @@ interface Station {
 interface GoogleMapComponentProps {
     stations: Station[];
     selectedStation: Station | null;
+    onStationSelect?: (station: Station | null) => void;
 }
 
-const GoogleMapComponent = ({ stations }: GoogleMapComponentProps) => {
+const GoogleMapComponent = ({ stations, selectedStation, onStationSelect }: GoogleMapComponentProps) => {
     const mapRef = useRef<google.maps.Map | null>(null);
     const [selectedMarker, setSelectedMarker] = useState<Station | null>(null);
     const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
@@ -52,6 +54,14 @@ const GoogleMapComponent = ({ stations }: GoogleMapComponentProps) => {
     const { isLoaded, loadError } = useJsApiLoader({
         googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ''
     });
+
+    useEffect(() => {
+        if (selectedStation && mapRef.current) {
+            mapRef.current.setCenter({ lat: selectedStation.lat, lng: selectedStation.lng });
+            mapRef.current.setZoom(16);
+            setSelectedMarker(selectedStation);
+        }
+    }, [selectedStation]);
 
     const requestLocation = useCallback(() => {
         setLocationError(null);
@@ -101,6 +111,11 @@ const GoogleMapComponent = ({ stations }: GoogleMapComponentProps) => {
 
     const onMarkerClick = (station: Station) => {
         setSelectedMarker(station);
+        if (onStationSelect) onStationSelect(station);
+        if (mapRef.current) {
+            mapRef.current.setCenter({ lat: station.lat, lng: station.lng });
+            mapRef.current.setZoom(16);
+        }
     };
 
     if (loadError) {
@@ -184,13 +199,11 @@ const GoogleMapComponent = ({ stations }: GoogleMapComponentProps) => {
                     >
                         <div className="p-2 min-w-[200px]">
                             <h3 className="font-bold text-gray-900 text-base">{selectedMarker.name}</h3>
-                            <div className={`text-sm font-semibold mt-1 ${selectedMarker.status === 'Available' ? 'text-green-600' : 'text-red-500'}`}>
-                                {selectedMarker.status === 'Available' ? '✅ Disponible' : '❌ Ocupado'}
+                            <div className="text-sm font-semibold mt-1 text-green-600">
+                                ✅ Disponible
                             </div>
-                            {selectedMarker.freeNum !== undefined && (
-                                <p className="text-sm text-gray-600 mt-1">
-                                    🔋 {selectedMarker.freeNum} / {selectedMarker.totalNum} cargadores disponibles
-                                </p>
+                            {selectedMarker.category && (
+                                <p className="text-sm text-gray-500 mt-1">🏷️ {selectedMarker.category}</p>
                             )}
                             {selectedMarker.dist && (
                                 <p className="text-sm text-gray-500">📍 {selectedMarker.dist}</p>

@@ -156,15 +156,15 @@ export const PymesSections = () => {
                     </motion.div>
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
                         {[
-                            "/images/ai_generated/gallery_scan.png",
-                            "/images/ai_generated/cafe_voltifi.png",
-                            "/images/ai_generated/retail_voltifi.png",
-                            "/images/ai_generated/event_voltifi.png"
-                        ].map((src, i) => (
+                            { src: "/images/ai_generated/gallery_scan.png", alt: "Galería Voltaje 1" },
+                            { src: "/images/ai_generated/cafe_voltifi.png", alt: "Galería Voltaje 2" },
+                            { src: "/images/ai_generated/technicians_installing_v2.png", alt: "Instalación de Estación Voltaje" },
+                            { src: "/images/ai_generated/event_voltifi.png", alt: "Galería Voltaje 4" }
+                        ].map((item, i) => (
                             <div key={i} className="aspect-square bg-white/5 rounded-2xl border border-white/5 hover:border-[#00E676] transition-colors cursor-pointer overflow-hidden group relative">
                                 <img
-                                    src={src}
-                                    alt={`Galería Voltaje ${i + 1}`}
+                                    src={item.src}
+                                    alt={item.alt}
                                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 opacity-60 group-hover:opacity-40 transition-opacity" />

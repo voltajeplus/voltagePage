@@ -528,7 +528,7 @@ export const EventsSection = () => {
                             </div>
                             <div className="mt-8 text-sm text-gray-500">
                                 <p>📍 Av Sucre, Los Dos Caminos, Residencia Comercial Yutaje, Ofc. 083, Miranda, Caracas</p>
-                                <p className="mt-1">📧 voltajevzla@gmail.com | 📞 0212-2351952 / 0212-2354994</p>
+                                <p className="mt-1">📧 ventasvoltaje09@gmail.com | 📞 0212-2351952 / 0212-2354994</p>
                             </div>
                         </div>
                     </motion.div>
