@@ -441,68 +441,57 @@ export const EventsSection = () => {
                 </div>
             </section>
 
-            {/* Terms */}
+            {/* Terms & Payment */}
             <section className="py-20 bg-black/50">
-                <div className="container mx-auto px-6 max-w-5xl">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                        <motion.div
-                            initial={{ opacity: 0, x: -30 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            className="glass rounded-3xl p-8 border border-white/5"
-                        >
-                            <div className="flex items-center gap-3 mb-6">
-                                <ClipboardList className="w-6 h-6 text-[#00E676]" />
-                                <h2 className="text-2xl font-bold">Condiciones de <span className="text-[#00E676]">Resguardo y Reposición</span></h2>
-                            </div>
-                            <p className="text-gray-400 text-sm mb-6">
-                                El contratante asume la responsabilidad por el resguardo y custodia de los equipos durante el evento.
-                            </p>
-                            <div className="space-y-3">
-                                {[
-                                    { item: "Power Bank individual", price: "$30" },
-                                    { item: "Estación de 12 Power Bank", price: "$1.100" },
-                                    { item: "Estación de 24 Power Bank", price: "$2.500" },
-                                    { item: "Estación de 32 y 48 Power Bank", price: "$3.700" }
-                                ].map((term, tIdx) => (
-                                    <div key={tIdx} className="flex items-center justify-between py-3 border-b border-white/5 last:border-0">
-                                        <span className="text-gray-300 text-sm">{term.item}</span>
-                                        <span className="text-[#00E676] font-bold">{term.price}</span>
-                                    </div>
-                                ))}
-                            </div>
-                        </motion.div>
+                <div className="container mx-auto px-6 max-w-4xl">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="glass rounded-3xl p-8 md:p-12 border border-white/5"
+                    >
+                        <div className="flex items-center gap-3 mb-8">
+                            <Shield className="w-6 h-6 text-[#00E676]" />
+                            <h2 className="text-2xl md:text-3xl font-bold">Términos y <span className="text-[#00E676]">Condiciones</span></h2>
+                        </div>
 
-                        <motion.div
-                            initial={{ opacity: 0, x: 30 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            className="glass rounded-3xl p-8 border border-white/5 flex flex-col justify-center"
-                        >
-                            <div className="flex items-center gap-3 mb-6">
-                                <Shield className="w-6 h-6 text-[#00E676]" />
-                                <h2 className="text-2xl font-bold">Términos de <span className="text-[#00E676]">Pago</span></h2>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div>
+                                <div className="flex items-center gap-3 mb-4">
+                                    <ClipboardList className="w-5 h-5 text-[#00E676]" />
+                                    <h3 className="font-bold text-lg">Resguardo de Equipos</h3>
+                                </div>
+                                <p className="text-gray-400 text-sm leading-relaxed mb-4">
+                                    El contratante asume la responsabilidad por el resguardo y custodia de los equipos durante el evento.
+                                    En caso de pérdida, robo o daño total, se aplicarán los costos de reposición establecidos.
+                                </p>
+                                <p className="text-gray-500 text-xs">
+                                    * Costo de transporte ajustable según ubicación del evento (Plan Estándar).
+                                </p>
                             </div>
-                            <ul className="space-y-4">
-                                <li className="flex items-start gap-3 text-gray-300">
-                                    <Check className="w-5 h-5 text-[#00E676] shrink-0 mt-0.5" />
-                                    Todas las tarifas se calculan en divisas.
-                                </li>
-                                <li className="flex items-start gap-3 text-gray-300">
-                                    <Check className="w-5 h-5 text-[#00E676] shrink-0 mt-0.5" />
-                                    Pagaderas a la tasa Euro BCV del día.
-                                </li>
-                                <li className="flex items-start gap-3 text-gray-300">
-                                    <Check className="w-5 h-5 text-[#00E676] shrink-0 mt-0.5" />
-                                    Pago por anticipado.
-                                </li>
-                                <li className="flex items-start gap-3 text-gray-300">
-                                    <Check className="w-5 h-5 text-[#00E676] shrink-0 mt-0.5" />
-                                    Costo de transporte ajustable según ubicación del evento (Plan Estándar).
-                                </li>
-                            </ul>
-                        </motion.div>
-                    </div>
+
+                            <div>
+                                <div className="flex items-center gap-3 mb-4">
+                                    <Shield className="w-5 h-5 text-[#00E676]" />
+                                    <h3 className="font-bold text-lg">Condiciones de Pago</h3>
+                                </div>
+                                <ul className="space-y-3">
+                                    <li className="flex items-start gap-3 text-sm text-gray-300">
+                                        <Check className="w-4 h-4 text-[#00E676] shrink-0 mt-0.5" />
+                                        Todas las tarifas se calculan en divisas.
+                                    </li>
+                                    <li className="flex items-start gap-3 text-sm text-gray-300">
+                                        <Check className="w-4 h-4 text-[#00E676] shrink-0 mt-0.5" />
+                                        Pagaderas a la tasa Euro BCV del día.
+                                    </li>
+                                    <li className="flex items-start gap-3 text-sm text-gray-300">
+                                        <Check className="w-4 h-4 text-[#00E676] shrink-0 mt-0.5" />
+                                        Pago por anticipado.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </motion.div>
                 </div>
             </section>
 
