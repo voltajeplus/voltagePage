@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Button } from "@/components/ui/Button";
 import { motion } from 'framer-motion';
-import { Clock, Star, Zap, CheckCircle } from 'lucide-react';
+import { Clock, Star, Zap, TrendingUp, Coins, Shield } from 'lucide-react';
 
 export const PymesSections = () => {
     return (
@@ -96,14 +96,43 @@ export const PymesSections = () => {
                                 Regístrate hoy y obtén acceso a beneficios únicos diseñados para impulsar tu negocio desde el primer día.
                             </p>
 
-                            <ul className="space-y-4 mb-8">
-                                {['20% de Descuento en tu Primera Unidad', 'Paquete de Instalación Gratuito', 'Soporte Prioritario 24/7'].map((item, i) => (
-                                    <li key={i} className="flex items-center gap-3 text-sm text-gray-300">
-                                        <CheckCircle className="w-5 h-5 text-[#00E676] shrink-0" />
-                                        {item}
-                                    </li>
-                                ))}
-                            </ul>
+                            <div className="space-y-6 mb-8">
+                                <div className="flex items-start gap-4">
+                                    <div className="w-10 h-10 rounded-xl bg-[#00E676]/10 flex items-center justify-center shrink-0 group-hover:bg-[#00E676] transition-colors">
+                                        <TrendingUp className="w-5 h-5 text-[#00E676]" />
+                                    </div>
+                                    <div>
+                                        <h4 className="font-bold text-white text-sm">Inversión Cero</h4>
+                                        <p className="text-xs text-gray-400 mt-1 leading-relaxed">
+                                            Instalación 100% Gratuita: Llevamos y configuramos la estación inteligente en tu local sin ningún costo de afiliación ni cargos ocultos.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div className="flex items-start gap-4">
+                                    <div className="w-10 h-10 rounded-xl bg-[#00E676]/10 flex items-center justify-center shrink-0">
+                                        <Coins className="w-5 h-5 text-[#00E676]" />
+                                    </div>
+                                    <div>
+                                        <h4 className="font-bold text-white text-sm">Ganancias por Comisión</h4>
+                                        <p className="text-xs text-gray-400 mt-1 leading-relaxed">
+                                            Modelo de Comisión: Gana un porcentaje por cada usuario que recargue o retire una batería en tu establecimiento. ¡Tu espacio genera dinero de forma autónoma!
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div className="flex items-start gap-4">
+                                    <div className="w-10 h-10 rounded-xl bg-[#00E676]/10 flex items-center justify-center shrink-0">
+                                        <Shield className="w-5 h-5 text-[#00E676]" />
+                                    </div>
+                                    <div>
+                                        <h4 className="font-bold text-white text-sm">Mantenimiento Incluido</h4>
+                                        <p className="text-xs text-gray-400 mt-1 leading-relaxed">
+                                            Monitoreamos las estaciones en tiempo real. Si una batería requiere cambio o soporte, nuestro equipo técnico lo resuelve de inmediato sin costo para ti.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
 
                             <Link href="/registro" className="w-full">
                                 <Button className="w-full" size="lg">Reclamar Oferta Ahora</Button>
