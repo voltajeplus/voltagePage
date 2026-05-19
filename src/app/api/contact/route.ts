@@ -22,8 +22,8 @@ export async function POST(request: Request) {
 
         await transporter.sendMail({
             from: `"Voltaje Web" <${process.env.EMAIL_USER}>`,
-            to: 'ventasvoltaje09@gmail.com',
-            bcc: 'voltajevzla@gmail.com',
+            to: 'voltajevzla@gmail.com',
+            bcc: 'ventasvoltaje09@gmail.com',
             subject: _subject || 'Nuevo mensaje desde Voltaje Web',
             html: `
                 <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;padding:20px">

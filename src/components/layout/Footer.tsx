@@ -62,7 +62,7 @@ export const Footer = () => {
                             <a href="https://www.facebook.com/profile.php?id=61575363824672&locale=es_LA" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-white/5 hover:bg-[#00E676] hover:text-black text-gray-400 transition-all">
                                 <Facebook className="w-4 h-4" />
                             </a>
-                            <a href="mailto:ventasvoltaje09@gmail.com" className="p-2 rounded-full bg-white/5 hover:bg-[#00E676] hover:text-black text-gray-400 transition-all">
+                            <a href="mailto:voltajevzla@gmail.com" className="p-2 rounded-full bg-white/5 hover:bg-[#00E676] hover:text-black text-gray-400 transition-all">
                                 <Mail className="w-4 h-4" />
                             </a>
                         </div>
@@ -99,7 +99,7 @@ export const Footer = () => {
                             </li>
                             <li className="flex items-center gap-3">
                                 <span className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-[#00E676]">✉️</span>
-                                <a href="mailto:ventasvoltaje09@gmail.com" className="hover:text-[#00E676] transition-colors">ventasvoltaje09@gmail.com</a>
+                                <a href="mailto:voltajevzla@gmail.com" className="hover:text-[#00E676] transition-colors">voltajevzla@gmail.com</a>
                             </li>
                             <li className="flex items-center gap-3">
                                 <span className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-[#00E676]">📍</span>
