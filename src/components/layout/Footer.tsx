@@ -15,23 +15,21 @@ export const Footer = () => {
 
         const form = e.currentTarget;
         const formData = new FormData(form);
-        const data = Object.fromEntries(formData.entries());
 
         try {
             const response = await fetch('https://formsubmit.co/ajax/voltajevzla@gmail.com', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify(data)
+                body: formData
             });
 
-            if (response.ok) {
+            const result = await response.json();
+            console.log('FormSubmit response:', result);
+
+            if (response.ok && result.success) {
                 setIsSubmitted(true);
                 form.reset();
             } else {
-                throw new Error('Error al enviar el formulario');
+                throw new Error(result.message || 'Error al enviar el formulario');
             }
         } catch (error) {
             console.error('Error:', error);

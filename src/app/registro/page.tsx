@@ -16,22 +16,20 @@ export default function RegistroPage() {
         setIsSubmitting(true);
 
         const formData = new FormData(e.currentTarget);
-        const data = Object.fromEntries(formData.entries());
 
         try {
             const response = await fetch('https://formsubmit.co/ajax/voltajevzla@gmail.com', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify(data)
+                body: formData
             });
 
-            if (response.ok) {
+            const result = await response.json();
+            console.log('FormSubmit response:', result);
+
+            if (response.ok && result.success) {
                 setIsSubmitted(true);
             } else {
-                alert('Hubo un error al enviar el formulario. Por favor intenta nuevamente.');
+                alert('Error: ' + (result.message || 'Hubo un error al enviar el formulario.'));
             }
         } catch (error) {
             console.error('Error enviando formulario:', error);
