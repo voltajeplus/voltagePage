@@ -16,14 +16,16 @@ export default function RegistroPage() {
         setIsSubmitting(true);
 
         const formData = new FormData(e.currentTarget);
+        const data = Object.fromEntries(formData.entries());
 
         try {
             const response = await fetch('https://formsubmit.co/ajax/voltajevzla@gmail.com', {
                 method: 'POST',
                 headers: {
+                    'Content-Type': 'application/json',
                     'Accept': 'application/json'
                 },
-                body: formData
+                body: JSON.stringify(data)
             });
 
             if (response.ok) {

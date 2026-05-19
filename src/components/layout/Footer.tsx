@@ -15,14 +15,16 @@ export const Footer = () => {
 
         const form = e.currentTarget;
         const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
 
         try {
             const response = await fetch('https://formsubmit.co/ajax/voltajevzla@gmail.com', {
                 method: 'POST',
                 headers: {
+                    'Content-Type': 'application/json',
                     'Accept': 'application/json'
                 },
-                body: formData
+                body: JSON.stringify(data)
             });
 
             if (response.ok) {
@@ -36,7 +38,7 @@ export const Footer = () => {
             alert('Hubo un error al procesar tu solicitud. Por favor intenta de nuevo.');
         } finally {
             setIsSubmitting(false);
-            setTimeout(() => setIsSubmitted(false), 5000); // Hide success message after 5 seconds
+            setTimeout(() => setIsSubmitted(false), 5000);
         }
     };
 
