@@ -169,7 +169,7 @@ export const BusinessSections = () => {
                                     </div>
                                     <div className="flex items-center gap-3">
                                         <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center">📞</div>
-                                        0416 375 0325
+                                        +58 416 404 9806
                                     </div>
                                 </div>
                             </div>
