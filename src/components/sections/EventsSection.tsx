@@ -209,6 +209,74 @@ export const EventsSection = () => {
                 </div>
             </section>
 
+            {/* Video Showcase */}
+            <section className="py-20 relative overflow-hidden">
+                <div className="container mx-auto px-6">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-center mb-12"
+                    >
+                        <h2 className="text-3xl md:text-5xl font-bold mb-4">
+                            Voltaje en <span className="text-[#00E676]">Acción</span>
+                        </h2>
+                        <p className="text-gray-400 max-w-2xl mx-auto">
+                            Miles de asistentes ya disfrutan de carga sin interrupciones en los mejores eventos del país.
+                        </p>
+                    </motion.div>
+
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="relative max-w-5xl mx-auto rounded-3xl overflow-hidden glass border border-white/10 shadow-2xl shadow-[#00E676]/10"
+                    >
+                        <div className="relative aspect-video">
+                            <video
+                                autoPlay
+                                loop
+                                muted
+                                playsInline
+                                className="w-full h-full object-cover"
+                            >
+                                <source src="/videos/conciertoVoltaje.mp4" type="video/mp4" />
+                            </video>
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                            <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
+                                <div className="max-w-2xl">
+                                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00E676]/20 border border-[#00E676]/30 text-[#00E676] text-xs font-bold mb-4">
+                                        <Zap className="w-3 h-3" />
+                                        Experiencia Real
+                                    </div>
+                                    <h3 className="text-2xl md:text-4xl font-bold mb-3">
+                        Conectando a miles en cada evento
+                    </h3>
+                                    <p className="text-sm md:text-base text-gray-200 max-w-xl">
+                                        Desde festivales musicales hasta ferias corporativas, nuestras estaciones 
+                                        mantienen a los asistentes cargados y conectados durante toda la experiencia.
+                                    </p>
+                                    <div className="flex flex-wrap gap-6 mt-6">
+                                        <div>
+                                            <span className="text-2xl font-bold text-[#00E676]">+5.000</span>
+                                            <p className="text-xs text-gray-400">Cargas exitosas</p>
+                                        </div>
+                                        <div>
+                                            <span className="text-2xl font-bold text-[#00E676]">+50</span>
+                                            <p className="text-xs text-gray-400">Eventos realizados</p>
+                                        </div>
+                                        <div>
+                                            <span className="text-2xl font-bold text-[#00E676]">100%</span>
+                                            <p className="text-xs text-gray-400">Disponibilidad garantizada</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </motion.div>
+                </div>
+            </section>
+
             {/* Plans */}
             <section id="eventos-planes" className="py-20 relative overflow-hidden">
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#00E676] opacity-[0.03] blur-[120px] rounded-full pointer-events-none" />
