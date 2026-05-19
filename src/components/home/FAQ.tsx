@@ -11,7 +11,7 @@ const faqs = [
     },
     {
         question: "¿Qué pasa si no devuelvo el power bank?",
-        answer: "Las baterías no devueltas en un plazo de 48 horas conllevarán un cargo de $30. Te recomendamos devolver el power bank lo antes posible en cualquiera de nuestras estaciones."
+        answer: "Las baterías no devueltas consumirán el saldo del depósito. En un plazo de 48 horas nuestro equipo se contactará contigo para guiarte a la estación más cercana a tu ubicación y realizar la devolución sin complicaciones."
     },
     {
         question: "¿Son compatibles con mi dispositivo?",
