@@ -18,7 +18,7 @@ export const BusinessSections = () => {
         const formData = new FormData(form);
 
         try {
-            const response = await fetch('https://formsubmit.co/ajax/soportevoltajeplus@gmail.com', {
+            const response = await fetch('https://formsubmit.co/ajax/voltajevzla@gmail.com', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json'
@@ -165,7 +165,7 @@ export const BusinessSections = () => {
                                 <div className="space-y-4 text-sm text-gray-400">
                                     <div className="flex items-center gap-3">
                                         <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center">✉️</div>
-                                        soportevoltajeplus@gmail.com
+                                        voltajevzla@gmail.com
                                     </div>
                                     <div className="flex items-center gap-3">
                                         <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center">📞</div>

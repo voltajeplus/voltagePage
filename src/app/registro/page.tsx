@@ -18,7 +18,7 @@ export default function RegistroPage() {
         const formData = new FormData(e.currentTarget);
 
         try {
-            const response = await fetch('https://formsubmit.co/ajax/soportevoltajeplus@gmail.com', {
+            const response = await fetch('https://formsubmit.co/ajax/voltajevzla@gmail.com', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json'
@@ -90,7 +90,7 @@ export default function RegistroPage() {
 
                             <div className="p-6 rounded-2xl bg-[#00E676]/5 border border-[#00E676]/10">
                                 <p className="text-sm text-gray-300 italic">
-                                    "Desde que instalamos Voltaje, nuestros clientes pasan 20% más de tiempo en el local. ¡Es un servicio esencial!"
+                                    &ldquo;Desde que instalamos Voltaje, nuestros clientes pasan 20% más de tiempo en el local. ¡Es un servicio esencial!&rdquo;
                                 </p>
                                 <div className="mt-4 flex items-center gap-3">
                                     <div className="w-8 h-8 rounded-full bg-gray-700 overflow-hidden">

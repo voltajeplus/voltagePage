@@ -2,13 +2,14 @@
 
 import React, { useEffect, useState, useMemo } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, Polyline, useMap } from 'react-leaflet';
+import type { LatLngBounds } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
 // Helper component to center map on selection
-const MapUpdater = ({ center, bounds }: { center?: [number, number], bounds?: any }) => {
+const MapUpdater = ({ center, bounds }: { center?: [number, number], bounds?: LatLngBounds }) => {
     const map = useMap();
     useEffect(() => {
-        if (!bounds || !center) return;
+        if (!center) return;
         if (bounds) map.fitBounds(bounds, { padding: [50, 50] });
         else map.flyTo(center, 14);
     }, [center, bounds, map]);
@@ -31,18 +32,18 @@ interface MapProps {
 const Map = ({ stations, selectedStation }: MapProps) => {
     // Correctly handle SSR by not rendering until mounted
     const [isMounted, setIsMounted] = useState(false);
-    const [L, setL] = useState<any>(null); // Leaflet instance
+    const [leafletLib, setLeafletLib] = useState<typeof import('leaflet') | null>(null);
     const [userLocation, setUserLocation] = useState<[number, number] | null>(null);
     const [routePath, setRoutePath] = useState<[number, number][]>([]);
 
     useEffect(() => {
         // Dynamically load Leaflet on client
         import('leaflet').then((leaflet) => {
-            const LInstance = leaflet.default || leaflet;
-            setL(LInstance);
+            const LInstance = leaflet.default || leaflet as unknown as typeof import('leaflet');
+            setLeafletLib(LInstance);
 
             // Fix Icons
-            // @ts-ignore
+            // @ts-expect-error - _getIconUrl exists on prototype but is not in the type definitions
             delete LInstance.Icon.Default.prototype._getIconUrl;
             LInstance.Icon.Default.mergeOptions({
                 iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
@@ -54,15 +55,15 @@ const Map = ({ stations, selectedStation }: MapProps) => {
     }, []);
 
     const icons = useMemo(() => {
-        if (!L) return null;
+        if (!leafletLib) return null;
         return {
-            green: new L.Icon({
+            green: new (leafletLib as typeof import('leaflet')).Icon({
                 iconUrl: '/images/marker0.png',
                 iconSize: [33, 48],
                 iconAnchor: [16, 48],
                 popupAnchor: [0, -52],
             }),
-            user: new L.Icon({
+            user: new (leafletLib as typeof import('leaflet')).Icon({
                 iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-blue.png',
                 shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
                 iconSize: [25, 41],
@@ -71,7 +72,7 @@ const Map = ({ stations, selectedStation }: MapProps) => {
                 shadowSize: [41, 41]
             })
         };
-    }, [L]);
+    }, [leafletLib]);
 
     useEffect(() => {
         if (navigator.geolocation) {
@@ -112,13 +113,13 @@ const Map = ({ stations, selectedStation }: MapProps) => {
     };
 
     const getBounds = () => {
-        if (userLocation && selectedStation && L) {
-            return L.latLngBounds([userLocation, [selectedStation.lat, selectedStation.lng]]);
+        if (userLocation && selectedStation && leafletLib) {
+            return (leafletLib as typeof import('leaflet')).latLngBounds([userLocation, [selectedStation.lat, selectedStation.lng]]);
         }
         return undefined;
     };
 
-    if (!isMounted || !icons || !L) return <div className="w-full h-full bg-[#111] animate-pulse rounded-2xl flex items-center justify-center text-green-500">Cargando Mapa...</div>;
+    if (!isMounted || !icons || !leafletLib) return <div className="w-full h-full bg-[#111] animate-pulse rounded-2xl flex items-center justify-center text-green-500">Cargando Mapa...</div>;
 
     return (
         <div className="w-full h-full rounded-2xl overflow-hidden glass border border-white/10 shadow-2xl relative z-0">

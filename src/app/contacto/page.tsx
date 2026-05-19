@@ -1,13 +1,13 @@
 'use client';
 
 
-import React, { useState, useEffect } from 'react';
-import nextDynamic from 'next/dynamic';
+import React, { useState } from 'react';
+import dynamic from 'next/dynamic';
 import { Navbar } from "@/components/layout/Navbar";
 import { Search, Filter, MapPin, Battery, CheckCircle, XCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-const GoogleMapComponent = nextDynamic<any>(() => import('@/components/home/GoogleMapComponent'), {
+const GoogleMapComponent = dynamic(() => import('@/components/home/GoogleMapComponent'), {
     ssr: false,
     loading: () => <div className="w-full h-full bg-gray-100 animate-pulse flex items-center justify-center text-green-600">Cargando Mapa...</div>
 });
@@ -24,23 +24,18 @@ interface Station {
     address?: string;
 }
 
+const INITIAL_STATIONS: Station[] = [
+    { id: 1, lat: 10.489046014202566, lng: -66.85450998095091, name: 'C.C. El Sambil Chacao', status: 'Available', dist: "2km", freeNum: 23, totalNum: 24, address: 'F4QW+J5 Caracas, Distrito Capital' },
+    { id: 2, lat: 10.489039377007927, lng: -66.85453080158577, name: 'C.C. El Sambil Chacao (Fast)', status: 'Available', dist: "2km", freeNum: 56, totalNum: 57, address: 'F4QW+J5 Caracas, Distrito Capital' },
+    { id: 3, lat: 10.490175357222666, lng: -66.8406271116394, name: 'Parque Generalísimo Francisco de Miranda', status: 'Occupied', dist: "2km", freeNum: 0, totalNum: 0, address: 'F5R5+GHF, Caracas' },
+    { id: 4, lat: 10.4905375, lng: -66.83726560000001, name: 'Eco Café', status: 'Occupied', dist: "2km", freeNum: 0, totalNum: 0, address: 'F5R7+636, Caracas' },
+    { id: 5, lat: 10.495777056989855, lng: -66.8316165325409, name: 'Prueba Johnson', status: 'Available', dist: "3km", freeNum: 6, totalNum: 12, address: 'Av Romulo Gallegos. Edif Johnson&Johnson' },
+    { id: 6, lat: 10.49568206138428, lng: -66.83112587050017, name: 'Torre Johnson & Johnson', status: 'Available', dist: "3km", freeNum: 158, totalNum: 260, address: 'Av. Rómulo Gallegos, Caracas' }
+];
+
 export default function UbicaTuEstacionPage() {
     const [selectedStation, setSelectedStation] = useState<Station | null>(null);
-    const [stations, setStations] = useState<Station[]>([]);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        const hardcodedStations: Station[] = [
-            { id: 1, lat: 10.489046014202566, lng: -66.85450998095091, name: 'C.C. El Sambil Chacao', status: 'Available', dist: "2km", freeNum: 23, totalNum: 24, address: 'F4QW+J5 Caracas, Distrito Capital' },
-            { id: 2, lat: 10.489039377007927, lng: -66.85453080158577, name: 'C.C. El Sambil Chacao (Fast)', status: 'Available', dist: "2km", freeNum: 56, totalNum: 57, address: 'F4QW+J5 Caracas, Distrito Capital' },
-            { id: 3, lat: 10.490175357222666, lng: -66.8406271116394, name: 'Parque Generalísimo Francisco de Miranda', status: 'Occupied', dist: "2km", freeNum: 0, totalNum: 0, address: 'F5R5+GHF, Caracas' },
-            { id: 4, lat: 10.4905375, lng: -66.83726560000001, name: 'Eco Café', status: 'Occupied', dist: "2km", freeNum: 0, totalNum: 0, address: 'F5R7+636, Caracas' },
-            { id: 5, lat: 10.495777056989855, lng: -66.8316165325409, name: 'Prueba Johnson', status: 'Available', dist: "3km", freeNum: 6, totalNum: 12, address: 'Av Romulo Gallegos. Edif Johnson&Johnson' },
-            { id: 6, lat: 10.49568206138428, lng: -66.83112587050017, name: 'Torre Johnson & Johnson', status: 'Available', dist: "3km", freeNum: 158, totalNum: 260, address: 'Av. Rómulo Gallegos, Caracas' }
-        ];
-        setStations(hardcodedStations);
-        setLoading(false);
-    }, []);
+    const [stations] = useState<Station[]>(INITIAL_STATIONS);
 
     return (
         <main className="h-screen bg-[#050505] text-white font-sans overflow-hidden flex flex-col">
@@ -109,7 +104,7 @@ export default function UbicaTuEstacionPage() {
 
                     {/* Results List */}
                     <div className="flex-1 overflow-y-auto p-4 space-y-3">
-                        {!loading && stations.map((station) => (
+                        {stations.map((station) => (
                             <div
                                 key={station.id}
                                 onClick={() => setSelectedStation(station)}

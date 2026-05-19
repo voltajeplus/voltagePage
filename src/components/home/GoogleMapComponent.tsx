@@ -1,16 +1,11 @@
 'use client';
 
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useRef } from 'react';
 import { GoogleMap, useJsApiLoader, Marker, InfoWindow } from '@react-google-maps/api';
 
 const containerStyle = {
     width: '100%',
     height: '100%'
-};
-
-const defaultCenter = {
-    lat: 10.4890,
-    lng: -66.8545
 };
 
 const CARACAS_CENTER = { lat: 10.4890, lng: -66.8545 };
@@ -47,8 +42,8 @@ interface GoogleMapComponentProps {
     selectedStation: Station | null;
 }
 
-const GoogleMapComponent = ({ stations, selectedStation }: GoogleMapComponentProps) => {
-    const [map, setMap] = useState<google.maps.Map | null>(null);
+const GoogleMapComponent = ({ stations }: GoogleMapComponentProps) => {
+    const mapRef = useRef<google.maps.Map | null>(null);
     const [selectedMarker, setSelectedMarker] = useState<Station | null>(null);
     const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
     const [locationLoaded, setLocationLoaded] = useState(false);
@@ -69,9 +64,10 @@ const GoogleMapComponent = ({ stations, selectedStation }: GoogleMapComponentPro
                     };
                     setUserLocation(loc);
                     setLocationLoaded(true);
-                    if (map) {
-                        map.setCenter(loc);
-                        map.setZoom(15);
+                    const currentMap = mapRef.current;
+                    if (currentMap) {
+                        currentMap.setCenter(loc);
+                        currentMap.setZoom(15);
                     }
                 },
                 (error) => {
@@ -87,10 +83,6 @@ const GoogleMapComponent = ({ stations, selectedStation }: GoogleMapComponentPro
             setLocationError("Geolocalización no soportada");
             setLocationLoaded(true);
         }
-    }, [map]);
-
-    useEffect(() => {
-        requestLocation();
     }, []);
 
     const mapCenter = locationLoaded 
@@ -100,11 +92,11 @@ const GoogleMapComponent = ({ stations, selectedStation }: GoogleMapComponentPro
     const mapZoom = userLocation ? 15 : 13;
 
     const onLoad = useCallback((map: google.maps.Map) => {
-        setMap(map);
+        mapRef.current = map;
     }, []);
 
     const onUnmount = useCallback(() => {
-        setMap(null);
+        mapRef.current = null;
     }, []);
 
     const onMarkerClick = (station: Station) => {

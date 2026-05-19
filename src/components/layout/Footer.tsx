@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Zap, Instagram, Twitter, Linkedin, Facebook } from 'lucide-react';
+import { Zap, Instagram, Facebook, Mail } from 'lucide-react';
 import { Button } from '../ui/Button';
 
 export const Footer = () => {
@@ -17,7 +17,7 @@ export const Footer = () => {
         const formData = new FormData(form);
 
         try {
-            const response = await fetch('https://formsubmit.co/ajax/soportevoltajeplus@gmail.com', {
+            const response = await fetch('https://formsubmit.co/ajax/voltajevzla@gmail.com', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json'
@@ -55,11 +55,15 @@ export const Footer = () => {
                             Energía inteligente para un futuro conectado.
                         </p>
                         <div className="flex gap-4">
-                            {[Instagram, Twitter, Linkedin, Facebook].map((Icon, i) => (
-                                <a key={i} href="#" className="p-2 rounded-full bg-white/5 hover:bg-[#00E676] hover:text-black text-gray-400 transition-all">
-                                    <Icon className="w-4 h-4" />
-                                </a>
-                            ))}
+                            <a href="https://www.instagram.com/voltaje_oficial_plus/" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-white/5 hover:bg-[#00E676] hover:text-black text-gray-400 transition-all">
+                                <Instagram className="w-4 h-4" />
+                            </a>
+                            <a href="https://www.facebook.com/profile.php?id=61575363824672&locale=es_LA" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-white/5 hover:bg-[#00E676] hover:text-black text-gray-400 transition-all">
+                                <Facebook className="w-4 h-4" />
+                            </a>
+                            <a href="mailto:voltajevzla@gmail.com" className="p-2 rounded-full bg-white/5 hover:bg-[#00E676] hover:text-black text-gray-400 transition-all">
+                                <Mail className="w-4 h-4" />
+                            </a>
                         </div>
                     </div>
 
@@ -67,18 +71,20 @@ export const Footer = () => {
                     <div>
                         <h4 className="font-bold mb-6 text-white">Empresa</h4>
                         <ul className="space-y-4 text-sm text-gray-400">
-                            {['Sobre Nosotros', 'Carreras', 'Blog', 'Prensa'].map((link) => (
-                                <li key={link}><a href="#" className="hover:text-[#00E676] transition-colors">{link}</a></li>
-                            ))}
+                            <li><Link href="/" className="hover:text-[#00E676] transition-colors">Inicio</Link></li>
+                            <li><Link href="/beneficios" className="hover:text-[#00E676] transition-colors">Beneficios</Link></li>
+                            <li><Link href="/eventos" className="hover:text-[#00E676] transition-colors">Eventos</Link></li>
+                            <li><Link href="/contacto" className="hover:text-[#00E676] transition-colors">Contacto</Link></li>
                         </ul>
                     </div>
 
                     <div>
                         <h4 className="font-bold mb-6 text-white">Producto</h4>
                         <ul className="space-y-4 text-sm text-gray-400">
-                            {['Características', 'Precios', 'Casos de Uso', 'Seguridad'].map((link) => (
-                                <li key={link}><a href="#" className="hover:text-[#00E676] transition-colors">{link}</a></li>
-                            ))}
+                            <li><Link href="/como-funciona" className="hover:text-[#00E676] transition-colors">Negocios</Link></li>
+                            <li><Link href="/precios" className="hover:text-[#00E676] transition-colors">Beneficios PYMES</Link></li>
+                            <li><Link href="/eventos" className="hover:text-[#00E676] transition-colors">Alquiler para Eventos</Link></li>
+                            <li><Link href="/registro" className="hover:text-[#00E676] transition-colors">Registro</Link></li>
                         </ul>
                     </div>
 
@@ -92,7 +98,7 @@ export const Footer = () => {
                             </li>
                             <li className="flex items-center gap-3">
                                 <span className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-[#00E676]">✉️</span>
-                                <a href="mailto:soportevoltajeplus@gmail.com" className="hover:text-[#00E676] transition-colors">soportevoltajeplus@gmail.com</a>
+                                <a href="mailto:voltajevzla@gmail.com" className="hover:text-[#00E676] transition-colors">voltajevzla@gmail.com</a>
                             </li>
                             <li className="flex items-center gap-3">
                                 <span className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-[#00E676]">📍</span>

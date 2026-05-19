@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import { motion } from 'framer-motion';
 
-const GoogleMapComponent = dynamic<any>(() => import('./GoogleMapComponent'), {
+const GoogleMapComponent = dynamic(() => import('./GoogleMapComponent'), {
     ssr: false,
     loading: () => (
         <div className="w-full h-full flex items-center justify-center bg-[#050505] animate-pulse">
