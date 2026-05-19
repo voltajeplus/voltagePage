@@ -19,7 +19,7 @@ const faqs = [
     },
     {
         question: "¿Cómo puedo pagar?",
-        answer: "Pago Movil / Cashea / Paypal/ Binance"
+        answer: "Pago móvil y tarjeta de crédito"
     },
     {
         question: "¿Puedo devolver el power bank en cualquier estación?",
