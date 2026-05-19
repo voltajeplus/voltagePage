@@ -7,7 +7,7 @@ import { Plus, Minus } from 'lucide-react';
 const faqs = [
     {
         question: "¿Cuánto cuesta alquilar un power bank?",
-        answer: "Aquí es 1200 bs"
+        answer: "Alquilar un power bank en nuestras estaciones tiene un costo de 1200 bs. Recuerda que el pago se realiza por adelantado y puedes devolverlo en cualquiera de nuestros puntos de la red."
     },
     {
         question: "¿Qué pasa si no devuelvo el power bank?",
