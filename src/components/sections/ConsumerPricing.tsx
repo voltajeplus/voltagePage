@@ -61,7 +61,7 @@ export const ConsumerPricing = () => {
 
                         <div className="mt-8">
                             <Link href="/registro">
-                                <Button className="w-full">Recargar Saldo</Button>
+                                <Button className="w-full">Solicita Información</Button>
                             </Link>
                         </div>
                     </div>
