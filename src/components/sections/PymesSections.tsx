@@ -145,7 +145,15 @@ export const PymesSections = () => {
             {/* Gallery */}
             <section className="py-20 pb-32">
                 <div className="container mx-auto px-6">
-                    <h2 className="text-center text-2xl font-bold mb-12">Así se ven en acción</h2>
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-center mb-12"
+                    >
+                        <h2 className="text-3xl md:text-4xl font-bold mb-4">Únete a Nuestra Red de <span className="text-[#00E676]">Voltaje</span></h2>
+                        <p className="text-gray-400 max-w-xl mx-auto">La tecnología que tu negocio necesita. ¡Pídela antes de que se agoten en tu zona!</p>
+                    </motion.div>
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
                         {[
                             "/images/ai_generated/gallery_scan.png",
