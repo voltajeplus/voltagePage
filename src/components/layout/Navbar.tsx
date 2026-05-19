@@ -53,7 +53,7 @@ export const Navbar = () => {
                     ))}
                     <Link href="/registro">
                         <Button variant="primary" size="sm">
-                            Cotizar Ahora
+                            GRATIS para tu negocio
                         </Button>
                     </Link>
                 </div>
@@ -89,7 +89,7 @@ export const Navbar = () => {
                             ))}
                             <Link href="/registro" onClick={() => setIsMobileMenuOpen(false)}>
                                 <Button variant="primary" className="w-full">
-                                    Cotizar Ahora
+GRATIS para tu negocio
                                 </Button>
                             </Link>
                         </div>

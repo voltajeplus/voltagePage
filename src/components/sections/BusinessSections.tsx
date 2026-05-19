@@ -68,7 +68,7 @@ export const BusinessSections = () => {
                         </p>
                         <Link href="/registro">
                             <Button size="lg" className="shadow-[0_0_30px_rgba(0,230,118,0.3)]">
-                                Solicitar Información
+                                GRATIS para tu negocio
                             </Button>
                         </Link>
                     </motion.div>

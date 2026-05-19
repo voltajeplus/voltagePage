@@ -136,7 +136,7 @@ export const EventsSection = () => {
                             </p>
                             <Link href="/registro">
                                 <Button size="lg" className="shadow-[0_0_30px_rgba(0,230,118,0.3)]">
-                                    Cotizar Evento
+                                    GRATIS para tu negocio
                                 </Button>
                             </Link>
                         </motion.div>
@@ -517,7 +517,7 @@ export const EventsSection = () => {
                             <div className="flex flex-col sm:flex-row gap-4 justify-center">
                                 <Link href="/registro">
                                     <Button size="lg" className="shadow-[0_0_30px_rgba(0,230,118,0.3)] w-full sm:w-auto">
-                                        Cotizar Ahora
+                                        GRATIS para tu negocio
                                     </Button>
                                 </Link>
                                 <Link href="/contacto">
