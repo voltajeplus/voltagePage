@@ -7,7 +7,7 @@ import { Plus, Minus } from 'lucide-react';
 const faqs = [
     {
         question: "¿Cuánto cuesta alquilar un power bank?",
-        answer: "El Costo es de 20$ al cambio BCV."
+        answer: "Aquí es 1200 bs"
     },
     {
         question: "¿Qué pasa si no devuelvo el power bank?",
