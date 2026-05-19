@@ -32,8 +32,8 @@ export default function Home() {
               <span className="text-[#00E676]">Encuentra la más cercana a ti.</span>
             </h2>
             <p className="text-gray-400 text-lg mb-8 max-w-2xl mx-auto">
-              Con más de 6 estaciones en Caracas, siempre hay una estación Voltaje cerca de ti. 
-              Carga tu móvil en segundos y devuelve la batería en cualquier punto de nuestra red.
+              Con nuestra red de estaciones inteligentes, siempre hay un punto de carga cerca de ti. 
+              Carga tu móvil en segundos y devuelve la batería en cualquier estación de nuestra red.
             </p>
             <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-[#00E676]/10">
               <img
