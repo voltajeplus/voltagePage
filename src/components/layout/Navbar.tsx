@@ -23,6 +23,7 @@ export const Navbar = () => {
         { name: 'Negocios', href: '/como-funciona' },
         { name: 'Beneficios PYMES', href: '/precios' },
         { name: 'Eventos', href: '/eventos' },
+        { name: 'Solicita tu Evento', href: '/solicita-evento' },
         { name: 'Ubica tu Estación', href: '/contacto' },
     ];
 
