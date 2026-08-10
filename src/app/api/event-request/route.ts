@@ -6,13 +6,21 @@ export async function POST(request: Request) {
         const data = await request.json();
         const { _subject, _captcha, ...fields } = data;
 
+        const emailUser = (process.env.EMAIL_USER || '').trim();
+        const emailPass = (process.env.EMAIL_PASS || '').replace(/\s+/g, '').trim();
+
+        if (!emailUser || !emailPass) {
+            console.error('Error al enviar solicitud: EMAIL_USER/EMAIL_PASS no configurados');
+            return NextResponse.json({ success: false, message: 'Error de configuración de correo' }, { status: 500 });
+        }
+
         const transporter = nodemailer.createTransport({
             host: 'smtp.gmail.com',
             port: 587,
             secure: false,
             auth: {
-                user: process.env.EMAIL_USER,
-                pass: process.env.EMAIL_PASS,
+                user: emailUser,
+                pass: emailPass,
             },
         });
 
@@ -21,7 +29,7 @@ export async function POST(request: Request) {
             .join('');
 
         await transporter.sendMail({
-            from: `"Voltaje Web - Eventos" <${process.env.EMAIL_USER}>`,
+            from: `"Voltaje Web - Eventos" <${emailUser}>`,
             to: 'eventosvoltajeplus@gmail.com',
             subject: _subject || 'Nueva solicitud de evento desde Voltaje Web',
             html: `
