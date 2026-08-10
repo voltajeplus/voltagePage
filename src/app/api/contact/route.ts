@@ -2,12 +2,11 @@ import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
 export async function POST(request: Request) {
+    const emailUser = (process.env.EMAIL_USER || '').trim();
+    const emailPass = (process.env.EMAIL_PASS || '').replace(/\s+/g, '').trim();
     try {
         const data = await request.json();
         const { _subject, _captcha, ...fields } = data;
-
-        const emailUser = (process.env.EMAIL_USER || '').trim();
-        const emailPass = (process.env.EMAIL_PASS || '').replace(/\s+/g, '').trim();
 
         if (!emailUser || !emailPass) {
             console.error('Error al enviar correo: EMAIL_USER/EMAIL_PASS no configurados');
