@@ -52,19 +52,37 @@ export default function DoohPage() {
     const videoRef = useRef<HTMLVideoElement>(null);
     const [isMuted, setIsMuted] = useState(true);
 
-    // Stations data for the map
-    const doohStations = [
-        { id: 6, lat: 10.489046014202566, lng: -66.85450998095091, name: 'C.C. El Sambil Chacao', status: 'Available', category: 'Centro Comercial', dist: '5km', freeNum: 72, totalNum: 72, address: 'Chacao, Caracas' },
-        { id: 32, lat: 10.500853102543433, lng: -66.84380851534425, name: 'Restaurant PinchoPan', status: 'Available', category: 'Restaurante', dist: '6km', freeNum: 12, totalNum: 12, address: 'Los Palos Grandes, Caracas' },
-        { id: 8, lat: 10.486476886547981, lng: -66.83935651352692, name: 'EVENTOS-VOLTAJE-PLUS', status: 'Available', category: 'Bar', dist: '7km', freeNum: 80, totalNum: 104, address: 'Parque Simón Bolívar, Caracas' },
-        { id: 1, lat: 10.4905375, lng: -66.83726560000001, name: 'Eco Café', status: 'Available', category: 'Cafetería', dist: '7km', freeNum: 12, totalNum: 12, address: 'Los Ruices, Caracas' },
-        { id: 2, lat: 10.495777056989855, lng: -66.8316165325409, name: 'Johnson & Johnson', status: 'Available', category: 'Oficina', dist: '7km', freeNum: 39, totalNum: 48, address: 'Av Romulo Gallegos, Caracas' },
-        { id: 36, lat: 10.495738434350784, lng: -66.83149333313521, name: 'TRÁNSITO VOLTAJE', status: 'Available', category: 'Entretenimiento', dist: '7km', freeNum: 12, totalNum: 12, address: 'Los Ruices, Caracas' },
-        { id: 44, lat: 10.492563125269852, lng: -66.83045647745962, name: 'La Jungla', status: 'Available', category: 'Bar', dist: '7km', freeNum: 24, totalNum: 24, address: 'Campo Claro, Caracas' },
-        { id: 43, lat: 10.49185744533558, lng: -66.82964856931152, name: 'Fetuccine', status: 'Available', category: 'Restaurante', dist: '7km', freeNum: 12, totalNum: 12, address: 'Av. Francisco de Miranda, Caracas' },
-        { id: 33, lat: 10.504093709521328, lng: -66.85031924418031, name: 'Clínica El Avila', status: 'Available', category: 'Clínica', dist: '5km', freeNum: 44, totalNum: 48, address: 'Av. San Juan Bosco, Caracas' },
-        { id: 42, lat: 10.541448204568155, lng: -66.87963462645875, name: 'Finacao - El Avila', status: 'Available', category: 'Hotel', dist: '4km', freeNum: 0, totalNum: 0, address: 'El Avila, Caracas' },
-    ];
+    // Stations data for the map — fetched live from API like the main page
+    const [stations, setStations] = useState<any[]>([]);
+
+    useEffect(() => {
+        const fetchStations = async () => {
+            try {
+                const res = await fetch('/api/stations');
+                const data = await res.json();
+                if (data.success && data.stations.length > 0) {
+                    setStations(data.stations);
+                    return;
+                }
+            } catch {
+                console.log('API error, using fallback data');
+            }
+            // Fallback matches MapSection hardcoded stations
+            setStations([
+                { id: 42, lat: 10.541448204568155, lng: -66.87963462645875, name: 'Finacao - El Avila', status: 'Occupied', category: 'Hotel', dist: '4km', freeNum: 0, totalNum: 0, address: 'Distrito Capital, Caracas' },
+                { id: 33, lat: 10.504093709521328, lng: -66.85031924418031, name: 'Clinica El Avila', status: 'Available', category: 'Clínica', dist: '5km', freeNum: 44, totalNum: 48, address: 'Av. San Juan Bosco, Caracas' },
+                { id: 6, lat: 10.489046014202566, lng: -66.85450998095091, name: 'C.C. El Sambil Chacao', status: 'Available', category: 'Centro Comercial', dist: '5km', freeNum: 72, totalNum: 72, address: 'Chacao, Caracas' },
+                { id: 32, lat: 10.500853102543433, lng: -66.84380851534425, name: 'Restaurant PinchoPan', status: 'Available', category: 'Restaurante', dist: '6km', freeNum: 12, totalNum: 12, address: 'Los Palos Grandes, Caracas' },
+                { id: 8, lat: 10.486476886547981, lng: -66.83935651352692, name: 'EVENTOS-VOLTAJE-PLUS', status: 'Available', category: 'Bar', dist: '7km', freeNum: 80, totalNum: 104, address: 'Parque Simón Bolívar, Caracas' },
+                { id: 1, lat: 10.4905375, lng: -66.83726560000001, name: 'Eco Café', status: 'Available', category: 'Cafetería', dist: '7km', freeNum: 12, totalNum: 12, address: 'Los Ruices, Caracas' },
+                { id: 2, lat: 10.495777056989855, lng: -66.8316165325409, name: 'Prueba Johnson', status: 'Available', category: 'Oficina', dist: '7km', freeNum: 39, totalNum: 48, address: 'Av Romulo Gallegos, Caracas' },
+                { id: 36, lat: 10.495738434350784, lng: -66.83149333313521, name: 'TRÁNSITO VOLTAJE', status: 'Available', category: 'Entretenimiento', dist: '7km', freeNum: 12, totalNum: 12, address: 'Los Ruices, Caracas' },
+                { id: 44, lat: 10.492563125269852, lng: -66.83045647745962, name: 'La Jungla', status: 'Available', category: 'Bar', dist: '7km', freeNum: 24, totalNum: 24, address: 'Campo Claro, Caracas' },
+                { id: 43, lat: 10.49185744533558, lng: -66.82964856931152, name: 'Fetuccine', status: 'Available', category: 'Restaurante', dist: '7km', freeNum: 12, totalNum: 12, address: 'Av. Francisco de Miranda, Caracas' },
+            ]);
+        };
+        fetchStations();
+    }, []);
 
     useEffect(() => {
         const move = (e: MouseEvent) => setCursorPos({ x: e.clientX, y: e.clientY });
@@ -681,10 +699,21 @@ export default function DoohPage() {
 
                         <Reveal delay={0.2}>
                             <div className="h-[500px] rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-[#00E676]/5">
-                                <GoogleMapComponent
-                                    stations={doohStations}
-                                    selectedStation={null}
-                                />
+                                {stations.length > 0 ? (
+                                    <GoogleMapComponent
+                                        stations={stations}
+                                        selectedStation={null}
+                                    />
+                                ) : (
+                                    <div className="w-full h-full bg-[#0a0f0d] flex items-center justify-center">
+                                        <div className="text-center">
+                                            <div className="w-10 h-10 mx-auto mb-3 rounded-full bg-[#00E676]/10 flex items-center justify-center animate-pulse">
+                                                <MapPin className="w-5 h-5 text-[#00E676]" />
+                                            </div>
+                                            <p className="text-sm text-gray-500">Cargando estaciones...</p>
+                                        </div>
+                                    </div>
+                                )}
                             </div>
                         </Reveal>
                     </div>
