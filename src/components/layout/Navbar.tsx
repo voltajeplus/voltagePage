@@ -24,6 +24,7 @@ export const Navbar = () => {
         { name: 'Beneficios PYMES', href: '/precios' },
         { name: 'Eventos', href: '/eventos' },
         { name: 'Solicita tu Evento', href: '/solicita-evento' },
+        { name: 'Publicidad DOOH', href: '/dooh' },
         { name: 'Ubica tu Estación', href: '/contacto' },
     ];
 
