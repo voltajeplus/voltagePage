@@ -56,7 +56,7 @@ export const Footer = () => {
                             Energía inteligente para un futuro conectado.
                         </p>
                         <div className="flex gap-4">
-                            <a href="https://www.instagram.com/voltaje_oficial_plus/" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-white/5 hover:bg-[#00E676] hover:text-black text-gray-400 transition-all">
+                            <a href="https://www.instagram.com/voltajevzla_/" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-white/5 hover:bg-[#00E676] hover:text-black text-gray-400 transition-all">
                                 <Instagram className="w-4 h-4" />
                             </a>
                             <a href="https://www.facebook.com/profile.php?id=61575363824672&locale=es_LA" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-white/5 hover:bg-[#00E676] hover:text-black text-gray-400 transition-all">
@@ -95,7 +95,7 @@ export const Footer = () => {
                         <ul className="space-y-4 text-sm text-gray-400">
                             <li className="flex items-center gap-3">
                                 <span className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-[#00E676]">📞</span>
-                                <a href="tel:+584164049806" className="hover:text-[#00E676] transition-colors">+58 416 404 9806</a>
+                                <a href="tel:+584126851090" className="hover:text-[#00E676] transition-colors">0412-685-1090</a>
                             </li>
                             <li className="flex items-center gap-3">
                                 <span className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-[#00E676]">✉️</span>
