@@ -5,7 +5,7 @@ import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { Button } from '@/components/ui/Button';
-import { Zap, Monitor, MapPin, Battery, Clock, Eye, TrendingUp, ArrowRight, Play, Users, Package, ChevronRight, Check, Shield, Wifi, Smartphone } from 'lucide-react';
+import { Zap, Monitor, MapPin, Battery, Clock, Eye, TrendingUp, ArrowRight, Play, Users, Package, ChevronRight, Check, Shield, Wifi, Smartphone, Volume2, VolumeX } from 'lucide-react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 
@@ -50,6 +50,9 @@ export default function DoohPage() {
     const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
     const heroScale = useTransform(scrollYProgress, [0, 1], [1, 0.9]);
     const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+    const videoRef = useRef<HTMLVideoElement>(null);
+    const [isMuted, setIsMuted] = useState(true);
+
     const videoRef = useRef<HTMLVideoElement>(null);
     const [isMuted, setIsMuted] = useState(true);
 
@@ -602,13 +605,32 @@ export default function DoohPage() {
                         {/* Video */}
                         <Reveal delay={0.15}>
                             <div className="relative rounded-2xl overflow-hidden glass border border-white/5 shadow-2xl shadow-[#00E676]/10">
-                                <div className="relative aspect-[9/16] max-h-[600px]">
-                                    <video autoPlay loop muted playsInline className="w-full h-full object-cover">
+                                <div className="relative w-full" style={{ paddingBottom: '177.78%' }}>
+                                    <video
+                                        ref={videoRef}
+                                        autoPlay
+                                        loop
+                                        muted={isMuted}
+                                        playsInline
+                                        className="absolute inset-0 w-full h-full object-cover"
+                                    >
                                         <source src="/videos/eventos-voltaje.mp4" type="video/mp4" />
                                     </video>
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent pointer-events-none" />
-                                    <div className="absolute bottom-6 left-6 right-6">
-                                        <div className="glass inline-block px-4 py-2 rounded-full text-sm font-bold text-[#00E676]">
+                                    <button
+                                        onClick={() => {
+                                            if (videoRef.current) {
+                                                videoRef.current.muted = !videoRef.current.muted;
+                                                setIsMuted(videoRef.current.muted);
+                                            }
+                                        }}
+                                        className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-black/50 hover:bg-black/70 text-white flex items-center justify-center transition-colors"
+                                        title={isMuted ? 'Activar audio' : 'Silenciar'}
+                                    >
+                                        {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
+                                    </button>
+                                    <div className="absolute bottom-4 left-4 right-4">
+                                        <div className="glass inline-block px-3 py-1.5 rounded-full text-xs font-bold text-[#00E676]">
                                             Tu marca en cada pantalla
                                         </div>
                                     </div>
