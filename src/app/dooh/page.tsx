@@ -602,7 +602,7 @@ export default function DoohPage() {
                         {/* Video */}
                         <Reveal delay={0.15}>
                             <div className="relative rounded-2xl overflow-hidden glass border border-white/5 shadow-2xl shadow-[#00E676]/10">
-                                <div className="relative w-full" style={{ paddingBottom: '66%' }}>
+                                <div className="relative w-full" style={{ paddingBottom: '72%' }}>
                                     <video
                                         ref={videoRef}
                                         autoPlay
