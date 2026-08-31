@@ -53,9 +53,6 @@ export default function DoohPage() {
     const videoRef = useRef<HTMLVideoElement>(null);
     const [isMuted, setIsMuted] = useState(true);
 
-    const videoRef = useRef<HTMLVideoElement>(null);
-    const [isMuted, setIsMuted] = useState(true);
-
     // Stations data for the map — fetched live from API like the main page
     const [stations, setStations] = useState<any[]>([]);
 
