@@ -153,14 +153,15 @@ export default function DoohPage() {
 
     const totems = [
         {
-            name: 'Tótem 32 PB',
-            model: 'ZBJ-166-6',
-            image: '/images/maquina32pb.png',
+            name: 'Tótem 24 PB',
+            model: 'ZBJ-166 (Tótem Estándar)',
+            image: '/images/maquina24pb.png',
             specs: [
-                '32 ranuras (slots) para baterías',
-                'Pantalla publicitaria 43" (1080×1920px)',
-                'Dimensiones: 217 × 31 × 71 cm',
-                'Peso: 53.6 kg (sin baterías)',
+                '24 ranuras (slots) para baterías',
+                'Pantalla publicitaria 23.8" Full HD (1080×1920px)',
+                'Dimensiones: 189 × 30 × 54 cm',
+                'Peso: 30.85 kg (sin baterías) / 38.85 kg (total)',
+                'Potencia Máxima: 160W',
             ],
         },
         {
@@ -169,12 +170,15 @@ export default function DoohPage() {
             image: '/images/maquina48pb.png',
             specs: [
                 '48 ranuras (slots) para baterías',
-                'Pantalla publicitaria 43" (1080×1920px)',
+                'Pantalla publicitaria 43" Full HD (1080×1920px)',
                 'Dimensiones: 217 × 31 × 71 cm',
                 'Peso: 57.3 kg (sin baterías)',
             ],
         },
     ];
+
+    // Note for the 32PB model — same screen specs as 48PB, just fewer batteries
+    const totemNote = 'Contamos también con el modelo de 32 PB (ZBJ-166-6) con pantalla publicitaria 43" y especificaciones técnicas equivalentes al modelo de 48 PB, variando únicamente la capacidad de power banks.';
 
     return (
         <main className="min-h-screen bg-[#050505] text-white font-sans selection:bg-[#00E676] selection:text-black overflow-x-hidden">
@@ -451,16 +455,16 @@ export default function DoohPage() {
                                                     </li>
                                                 ))}
                                             </ul>
-                                            <div className="mt-6 pt-6 border-t border-white/5 grid grid-cols-2 gap-3">
-                                                <div className="bg-white/[0.03] border border-white/5 rounded-xl p-4">
-                                                    <b className="block text-[#00E676] text-sm font-mono mb-1">43" Full HD</b>
-                                                    <span className="text-xs text-gray-500">Pantalla publicitaria vertical</span>
-                                                </div>
-                                                <div className="bg-white/[0.03] border border-white/5 rounded-xl p-4">
-                                                    <b className="block text-[#00E676] text-sm font-mono mb-1">OTA + WiFi</b>
-                                                    <span className="text-xs text-gray-500">Gestión remota sin SIM</span>
-                                                </div>
-                                            </div>
+                                    <div className="mt-6 pt-6 border-t border-white/5 grid grid-cols-2 gap-3">
+                                        <div className="bg-white/[0.03] border border-white/5 rounded-xl p-4">
+                                            <b className="block text-[#00E676] text-sm font-mono mb-1">{totem.name.includes('24') ? '23.8" Full HD' : '43" Full HD'}</b>
+                                            <span className="text-xs text-gray-500">Pantalla publicitaria vertical</span>
+                                        </div>
+                                        <div className="bg-white/[0.03] border border-white/5 rounded-xl p-4">
+                                            <b className="block text-[#00E676] text-sm font-mono mb-1">OTA + WiFi</b>
+                                            <span className="text-xs text-gray-500">Gestión remota sin SIM</span>
+                                        </div>
+                                    </div>
                                         </div>
                                     </div>
                                 </div>
@@ -486,6 +490,11 @@ export default function DoohPage() {
                                         {rule}
                                     </div>
                                 ))}
+                            </div>
+                            <div className="mt-6 pt-4 border-t border-white/5">
+                                <p className="text-sm text-gray-400 leading-relaxed">
+                                    <span className="text-[#00E676] font-semibold">Modelo 32 PB disponible:</span> {totemNote}
+                                </p>
                             </div>
                         </div>
                     </Reveal>
