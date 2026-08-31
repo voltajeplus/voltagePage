@@ -32,17 +32,23 @@ export const PymesSections = () => {
                         </Button>
                     </Link>
 
-                    {/* Hero Product Render Placeholder */}
-                    <div className="mt-16 relative max-w-4xl mx-auto h-[400px] flex items-center justify-center">
-                        <div className="w-full h-full glass rounded-3xl border border-white/5 bg-gradient-to-b from-white/5 to-transparent overflow-hidden shadow-2xl relative">
-                            <img
-                                src="/images/ai_generated/business_lifestyle.png"
-                                alt="Voltaje en Negocios"
-                                className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-700"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
-                            <div className="absolute bottom-8 left-0 right-0 text-center">
-                                <p className="text-[#00E676] font-mono text-sm tracking-widest font-bold">VOLTAJE STATION PRO</p>
+                    {/* Video Showcase */}
+                    <div className="mt-16 relative max-w-4xl mx-auto rounded-3xl overflow-hidden glass border border-white/10 shadow-2xl shadow-[#00E676]/10">
+                        <div className="relative aspect-[16/9]">
+                            <video
+                                autoPlay
+                                loop
+                                muted
+                                playsInline
+                                className="w-full h-full object-cover"
+                            >
+                                <source src="/videos/hero-video.mp4" type="video/mp4" />
+                            </video>
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+                            <div className="absolute bottom-6 left-6 right-6">
+                                <div className="glass inline-block px-4 py-2 rounded-full text-sm font-bold text-[#00E676]">
+                                    Estaciones Voltaje en Acción
+                                </div>
                             </div>
                         </div>
                     </div>

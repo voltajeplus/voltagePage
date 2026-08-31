@@ -106,7 +106,7 @@ export const Hero = () => {
                                 playsInline
                                 className="w-full h-full object-cover"
                             >
-                                <source src="/videos/hero-video.mp4" type="video/mp4" />
+                                <source src="/videos/new-hero-video.mp4" type="video/mp4" />
                             </video>
                             {/* Overlay */}
                             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20 pointer-events-none" />
