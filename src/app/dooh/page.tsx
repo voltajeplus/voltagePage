@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
+import { Button } from '@/components/ui/Button';
 import { Zap, Monitor, MapPin, Battery, Clock, Eye, TrendingUp, ArrowRight, Play, Users, Package, ChevronRight, Check, Shield, Wifi, Smartphone } from 'lucide-react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
@@ -561,6 +562,53 @@ export default function DoohPage() {
                             </div>
                         </div>
                     </Reveal>
+                </div>
+            </section>
+
+            {/* ══════════════════════════════════════ VIDEO EVENTOS ══════════════════════════════════════ */}
+            <section className="py-32 relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#00E676]/[0.03] to-transparent" />
+                <div className="absolute top-0 left-[1/4] w-[500px] h-[500px] rounded-full bg-[#00E676] opacity-[0.06] blur-[150px] pointer-events-none" />
+                <div className="absolute bottom-0 right-[1/4] w-[400px] h-[400px] rounded-full bg-[#FF2000] opacity-[0.04] blur-[120px] pointer-events-none" />
+
+                <div className="container mx-auto px-6 relative z-10">
+                    <div className="text-center mb-12">
+                        <span className="text-[#00E676] text-xs font-mono tracking-[0.2em] uppercase mb-6 block">Presencia en eventos</span>
+                        <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-[0.9] mb-6">
+                            Voltaje siempre está en los{' '}
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00E676] to-[#00C853]">
+                                grandes eventos
+                            </span>{' '}
+                            de nuestro país
+                        </h2>
+                        <p className="text-gray-400 text-lg mb-8 max-w-xl mx-auto">
+                            Tus marcas merecen la misma exposición que los eventos más importantes del país.
+                            Nosotros nos aseguramos de que tu mensaje llegue a donde importa.
+                        </p>
+                    </div>
+
+                    <div className="relative rounded-2xl overflow-hidden glass border border-white/5 shadow-2xl shadow-[#00E676]/10">
+                        <div className="relative aspect-[16/9]">
+                            <video autoPlay loop muted playsInline className="w-full h-full object-cover">
+                                <source src="/videos/eventos-voltaje.mp4" type="video/mp4" />
+                            </video>
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+                            <div className="absolute bottom-6 left-6 right-6">
+                                <div className="glass inline-block px-4 py-2 rounded-full text-sm font-bold text-[#00E676]">
+                                    Tu marca en cada pantalla
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="mt-12 text-center">
+                        <Button size="lg" className="shadow-[0_0_40px_rgba(0,230,118,0.4)] hover:shadow-[0_0_70px_rgba(0,230,118,0.6)]">
+                            <Zap className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
+                            Ver más en eventos
+                            <ArrowRight className="w-4 h-4" />
+                        </Button>
+                        <p className="mt-4 text-sm text-gray-500">Cotización en 24 horas · Sin costo de asesoría</p>
+                    </div>
                 </div>
             </section>
 
