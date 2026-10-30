@@ -12,8 +12,8 @@ const features = [
     },
     {
         icon: CreditCard,
-        title: "Pago Contactless",
-        description: "Sin apps obligatorias. Paga directamente en la estación con tu tarjeta de débito o crédito en segundos."
+        title: "Pago con App",
+        description: "Paga de forma segura con la App de Voltaje en segundos desde tu teléfono."
     },
     {
         icon: Shield,

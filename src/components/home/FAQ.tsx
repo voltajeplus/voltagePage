@@ -19,7 +19,7 @@ const faqs = [
     },
     {
         question: "¿Cómo puedo pagar?",
-        answer: "Pago móvil y tarjeta de crédito"
+        answer: "Pago móvil a través de la App de Voltaje"
     },
     {
         question: "¿Puedo devolver el power bank en cualquier estación?",
