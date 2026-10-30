@@ -9,7 +9,7 @@ const steps = [
         id: 1,
         icon: Scan,
         title: "Escanea o Paga",
-        description: "Usa la App de Voltaje o paga directamente con tu tarjeta contactless en la estación."
+        description: "Usa la App de Voltaje para escanear y pagar en la estación."
     },
     {
         id: 2,

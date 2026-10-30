@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { MessageCircle } from 'lucide-react';
 
 export const WhatsAppFAB = () => {
-    const phoneNumber = "584164049806";
+    const phoneNumber = "584126851090";
     const message = encodeURIComponent("¡Hola! 👋 Quiero más información sobre las estaciones de Voltaje.");
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
 

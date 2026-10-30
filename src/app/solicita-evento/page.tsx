@@ -386,9 +386,9 @@ export default function SolicitaEventoPage() {
                                 eventosvoltajeplus@gmail.com
                             </a>
                             <span className="hidden sm:block text-gray-700">•</span>
-                            <a href="tel:+584164049806" className="flex items-center justify-center gap-2 hover:text-[#00E676] transition-colors">
+                            <a href="tel:+584126851090" className="flex items-center justify-center gap-2 hover:text-[#00E676] transition-colors">
                                 <Phone className="w-4 h-4 text-[#00E676]" />
-                                +58 416 404 9806
+                                +58 412 685 1090
                             </a>
                         </div>
                     </motion.div>
