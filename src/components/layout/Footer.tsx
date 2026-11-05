@@ -138,7 +138,7 @@ export const Footer = () => {
                     <p>&copy; {new Date().getFullYear()} Voltaje. Todos los derechos reservados.</p>
                     <div className="flex gap-6">
                         <a href="#" className="hover:text-white transition-colors">Privacidad</a>
-                        <a href="#" className="hover:text-white transition-colors">Términos</a>
+                        <Link href="/terminos" className="hover:text-white transition-colors">Términos del Servicio</Link>
                         <a href="#" className="hover:text-white transition-colors">Cookies</a>
                     </div>
                 </div>
